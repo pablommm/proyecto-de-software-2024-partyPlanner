@@ -1,6 +1,8 @@
 package grupo_4.partyplannerbackend.Repositorio
 
 import grupo_4.partyplannerbackend.domain.Entidad
+import grupo_4.partyplannerbackend.domain.Usuario
+import org.springframework.stereotype.Repository
 import kotlin.reflect.jvm.internal.impl.serialization.deserialization.FlexibleTypeDeserializer.ThrowException
 
 open class Repositorio<T : Entidad>() {
@@ -51,4 +53,15 @@ open class Repositorio<T : Entidad>() {
     fun clear() {
         elementos.clear()
     }
+}
+
+@Repository
+open class RepoUser : Repositorio<Usuario>() {
+
+    fun search(nombreABuscar: String) = allInstances().filter { it.nombreYApellido.contains(nombreABuscar) }
+
+   // fun getUserPass(userIdentificador: UsuarioLoginDTO) = elementos.filter { user -> user.accesoUsuario(userIdentificador) }
+
+
+
 }

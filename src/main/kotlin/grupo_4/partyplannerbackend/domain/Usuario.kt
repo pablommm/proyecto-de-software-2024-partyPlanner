@@ -1,8 +1,8 @@
 package grupo_4.partyplannerbackend.domain
 
 class Usuario (
-    val nombre: String,
-    val apellido: String,
+    val nombreYApellido :String,
+
     val username: String,
     val contraseña : String,
     var eventos : MutableList<Evento> = mutableListOf()
