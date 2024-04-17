@@ -6,6 +6,13 @@ class Instalacion(
     val costoDeInstalacion : Int,
     val CapacidadInstalacion: Int,
     val LocalidadDeInstalacion : String
-) {
+): Entidad() {
+
+
+
+    override fun validar() {
+        TODO("Not yet implemented")
+    }
+
 
 }

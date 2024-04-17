@@ -1,5 +1,3 @@
-spring.application.name=partyPlannerBackend
-
 server:
     port: 9000
     error:

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin("*")
 
 class UsuarioController (@Autowired val userService : UsuarioService) {
 
@@ -18,6 +18,6 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
 
     @GetMapping("/Usuario/{id}")
     @Operation(summary = "Devuelve un usuario por id")
-    fun getUsuario(@PathVariable id: Int) = userService.getUser(id)
+    fun getUsuario(@PathVariable id: Int) = userService.getUser()
 
 }
