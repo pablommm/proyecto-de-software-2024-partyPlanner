@@ -3,9 +3,11 @@ package grupo_4.partyplannerbackend.Repositorio
 import grupo_4.partyplannerbackend.domain.Entidad
 import grupo_4.partyplannerbackend.domain.Instalacion
 import grupo_4.partyplannerbackend.domain.Usuario
+import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 import kotlin.reflect.jvm.internal.impl.serialization.deserialization.FlexibleTypeDeserializer.ThrowException
 
+@Component
 open class Repositorio<T : Entidad>() {
     val elementos: MutableList<T> = mutableListOf()
     var siguienteID: Int = 1

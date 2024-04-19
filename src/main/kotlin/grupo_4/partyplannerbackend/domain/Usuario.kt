@@ -7,8 +7,11 @@ class Usuario (
     var eventos : MutableList<Evento> = mutableListOf()
 ):Entidad(){
 
-    fun hola() = 0
+    fun esValidoNombre() = nombreYApellido.isEmpty()
+    fun validarNombre() {
+        if(esValidoNombre()) throw RuntimeException("El nombre esta vacio")
+    }
     override fun validar() {
-        hola()
+        validarNombre()
     }
 }
