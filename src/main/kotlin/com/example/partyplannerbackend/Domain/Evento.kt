@@ -1,4 +1,4 @@
-package grupo_4.partyplannerbackend.domain
+package com.example.partyplannerbackend.Domain
 
 import java.time.LocalDateTime
 

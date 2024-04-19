@@ -1,4 +1,4 @@
-package grupo_4.partyplannerbackend.domain
+package com.example.partyplannerbackend.Domain
 
 class Instalacion(
     val nombreDeInstalacion: String,
