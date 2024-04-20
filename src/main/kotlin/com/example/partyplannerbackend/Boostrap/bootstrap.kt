@@ -1,6 +1,7 @@
 package com.example.partyplannerbackend.Boostrap
 
 
+import com.example.partyplannerbackend.Domain.Rol
 import com.example.partyplannerbackend.Domain.Usuario
 import com.example.partyplannerbackend.Repositorio.RepoUser
 import org.springframework.beans.factory.InitializingBean
@@ -26,7 +27,8 @@ class userMagic : InitializingBean {
     val usuario1 = Usuario(
         nombreYApellido = "Verito 666",
         username = "veritorezando",
-        contrasenia = "1234"
+        contrasenia = "1234",
+        rol = Rol.ADMINISTRADOR
     )
 
     fun crearUser(){
