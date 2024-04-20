@@ -8,8 +8,6 @@ class Instalacion(
     val LocalidadDeInstalacion : String
 ): Entidad() {
 
-
-
     override fun validar() {
         TODO("Not yet implemented")
     }

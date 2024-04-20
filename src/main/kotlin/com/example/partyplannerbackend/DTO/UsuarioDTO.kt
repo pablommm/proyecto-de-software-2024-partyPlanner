@@ -1,7 +1,7 @@
 package com.example.partyplannerbackend.DTO
 
 
-class UsuarioDTO {
+class UsuarioDTO (val usuario : String , val contrasenia : String){
 
 
 
