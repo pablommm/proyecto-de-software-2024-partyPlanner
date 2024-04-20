@@ -11,7 +11,7 @@ class Evento
 
 
 // el evento debe sumar la lista de costo, generar un qr o target por evento
-     fun costoTotalDeServicio() = 0
+     fun costoTotalDeServicio() = serviciosAdquiridos.sumOf { it.monto }
 
     fun costoDelEvento() = costoTotalDeServicio() + lugar.costoDeInstalacion
 
