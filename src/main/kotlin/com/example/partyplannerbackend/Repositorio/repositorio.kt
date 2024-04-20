@@ -2,6 +2,8 @@ package com.example.partyplannerbackend.Repositorio
 
 
 import com.example.partyplannerbackend.Domain.Entidad
+import com.example.partyplannerbackend.Domain.Instalacion
+import com.example.partyplannerbackend.Domain.Servicio
 import com.example.partyplannerbackend.Domain.Usuario
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
@@ -60,3 +62,9 @@ open class Repositorio<T : Entidad>() {
 
 @Repository
 open class RepoUser : Repositorio<Usuario>()
+
+@Repository
+open class RepoInstalacion : Repositorio<Instalacion>()
+
+@Repository
+open class RepoServicios : Repositorio<Servicio>()
