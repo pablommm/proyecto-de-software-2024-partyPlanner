@@ -19,14 +19,14 @@ class userMagic : InitializingBean {
     lateinit var repoUser: RepoUser
 
     val usuarioPrueba = Usuario(
-        nombreYApellido = "juanperez1",
-        username = "sarasa",
+        nombreYApellido = "Jhon Smith",
+        username = "Jsmith",
         contrasenia = "1234"
     )
 
     val usuario1 = Usuario(
-        nombreYApellido = "Verito 666",
-        username = "veritorezando",
+        nombreYApellido = "Juan perez",
+        username = "Jperez",
         contrasenia = "1234",
         rol = Rol.ADMINISTRADOR
     )
