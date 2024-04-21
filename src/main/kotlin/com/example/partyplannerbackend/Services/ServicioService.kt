@@ -1,5 +1,7 @@
 package com.example.partyplannerbackend.Services
 
+import com.example.partyplannerbackend.Domain.Servicio
+import com.example.partyplannerbackend.Domain.Usuario
 import com.example.partyplannerbackend.Repositorio.RepoServicios
 import com.example.partyplannerbackend.Repositorio.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,9 +18,16 @@ class ServicioService {
 
     fun getServiciorById(id: Int) = repoService.getById(id)
 
-    fun deleteUser(id: Int) {
+    fun borrarServicio(id: Int) {
         repoService.delete(repoService.getById(id))
     }
+
+    fun crearServicio(nuevoServicio: Servicio): Servicio {
+        repoService.create(nuevoServicio)
+        return nuevoServicio
+    }
+
+
 
 
 }
