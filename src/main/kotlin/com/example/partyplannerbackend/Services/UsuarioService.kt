@@ -1,9 +1,11 @@
 package com.example.partyplannerbackend.Services
 
+import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
 import com.example.partyplannerbackend.Domain.Usuario
 import com.example.partyplannerbackend.Repositorio.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.lang.RuntimeException
 
 @Service
 class UsuarioService {
@@ -28,6 +30,14 @@ class UsuarioService {
     //fun updateUser(usuario: Usuario) = repoUsuario.update(usuario)
 
 
+    fun getUsuarioLogin(user: UsuarioLoginDTO): Usuario {
+        if(repoUsuario.getUserPass(user).isNotEmpty()) {
+            return repoUsuario.getUserPass(user).first()
+        } else {
+
+            throw RuntimeException("Los datos ingresados son incorrectos")
+        }
+    }
 
 
 }

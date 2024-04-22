@@ -1,5 +1,7 @@
 package com.example.partyplannerbackend.Domain
 
+import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
+
 class Usuario (
     val nombreYApellido :String,
     val username: String,
@@ -36,4 +38,9 @@ class Usuario (
         validarContrasenia()
         validarUsername()
     }
+
+    fun accesoUsuario(user: UsuarioLoginDTO): Boolean {
+        return user.usuario == username && user.contrasenia == contrasenia
+    }
+
 }

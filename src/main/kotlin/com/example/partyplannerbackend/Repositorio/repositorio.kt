@@ -1,6 +1,7 @@
 package com.example.partyplannerbackend.Repositorio
 
 
+import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
 import com.example.partyplannerbackend.Domain.Entidad
 import com.example.partyplannerbackend.Domain.Instalacion
 import com.example.partyplannerbackend.Domain.Servicio
@@ -58,10 +59,16 @@ open class Repositorio<T : Entidad>() {
     fun clear() {
         elementos.clear()
     }
+
+
 }
 
 @Repository
-open class RepoUser : Repositorio<Usuario>()
+open class RepoUser : Repositorio<Usuario>(){
+
+    fun getUserPass(userIdentificador: UsuarioLoginDTO) = elementos.filter { user -> user.accesoUsuario(userIdentificador) }
+
+}
 
 @Repository
 open class RepoInstalacion : Repositorio<Instalacion>()
