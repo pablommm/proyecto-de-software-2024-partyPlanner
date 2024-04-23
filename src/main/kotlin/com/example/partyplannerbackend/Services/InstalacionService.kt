@@ -14,7 +14,8 @@ class InstalacionService {
     @Autowired
     lateinit var repoInstalacion: RepoInstalacion
 
-    fun getInstalacion() = repoInstalacion.allInstances()
+    fun getInstalacionActivs() = repoInstalacion.allInstancesActivos()
+
     //fun getInstalacion(id: Int) = repoUsuario.getById(id)
 
     fun getInstalacionById(id: Int) = repoInstalacion.getById(id)
@@ -27,6 +28,7 @@ class InstalacionService {
         repoInstalacion.create(nuevaInstalacion)
         return nuevaInstalacion
     }
+
     // aun no es claro si agregaremos la funcion para  editar a la instalacion, pero almenos ya la tenemos agregada
     //fun updateUser(usuario: Usuario) = repoInstalacion.update(usuario)
 

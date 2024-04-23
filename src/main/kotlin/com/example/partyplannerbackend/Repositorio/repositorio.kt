@@ -20,6 +20,7 @@ open class Repositorio<T : Entidad>() {
     }
 
     fun allInstances() = elementos
+    fun allInstancesActivos() = elementos.filter { it.activo }
 
     fun existeElId(id: Int): Boolean = elementos.any { it.id == id }
 
