@@ -13,6 +13,8 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     @GetMapping("/Usuario")
     fun getUsuario() = userService.getUser()
 
+    @GetMapping("/Usuario/{id}")
+    fun getUsuarioByID(id: Int) = userService.getUserById(id)
 
     @PostMapping("/usuarioLogin")
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
