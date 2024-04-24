@@ -1,11 +1,14 @@
 package com.example.partyplannerbackend.Domain
 
+import javax.print.DocFlavor.URL
+
 class Instalacion(
     val nombreDeInstalacion: String,
     val descripcionDeInstalacion: String,
     val costoDeInstalacion : Int,
     val CapacidadInstalacion: Int,
-    val LocalidadDeInstalacion : String
+    val LocalidadDeInstalacion : String,
+    val imagenPrincipal : String
 ): Entidad() {
 
 
@@ -17,12 +20,12 @@ class Instalacion(
 
     fun esValidocostoDeInstalacionn() = costoDeInstalacion > 0
     fun validarcostoDeInstalacion() {
-        if(esValidocostoDeInstalacionn()) throw RuntimeException("El costo de instalacion tiene que ser mayor a 0")
+        if(!esValidocostoDeInstalacionn()) throw RuntimeException("El costo de instalacion tiene que ser mayor a 0")
     }
 
     fun esValidoCapacidadInstalacion() = CapacidadInstalacion > 0
     fun validarCapacidadInstalacion() {
-        if(esValidoCapacidadInstalacion()) throw RuntimeException("La capacidad de instalacion tiene que ser mayor a 0")
+        if(!esValidoCapacidadInstalacion()) throw RuntimeException("La capacidad de instalacion tiene que ser mayor a 0")
     }
 
     fun esValidoLocalidad() = LocalidadDeInstalacion.isEmpty()

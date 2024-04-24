@@ -14,7 +14,8 @@ class InstalacionService {
     @Autowired
     lateinit var repoInstalacion: RepoInstalacion
 
-    fun getInstalacionActivs() = repoInstalacion.allInstancesActivos()
+    fun getInstalacionesTodas() = repoInstalacion.allInstances()
+    fun getInstalacionActivos() = repoInstalacion.allInstancesActivos()
 
     //fun getInstalacion(id: Int) = repoUsuario.getById(id)
 

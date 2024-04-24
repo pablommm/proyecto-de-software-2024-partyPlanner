@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service
 class userMagic : InitializingBean {
     override fun afterPropertiesSet() {
         crearUser()
+        crearInstalacion()
     }
 
     @Autowired(required = true)
@@ -35,44 +36,46 @@ class userMagic : InitializingBean {
         repoUser.create(usuario1)
         repoUser.create(usuarioPrueba)
 
-
     }
 
     @Autowired(required = true)
     lateinit var repoInstalacion: RepoInstalacion
 
     // Instancia 1: Estadio
-    val estadio = Instalacion(
-        nombreDeInstalacion = "Estadio Monumental",
-        descripcionDeInstalacion = "Estadio de fútbol",
+    val salonDiamante = Instalacion(
+        nombreDeInstalacion = "Salon Diamante",
+        descripcionDeInstalacion = "Esta es la descripcion de salon diamante lalalala lalal al al ala la la la",
         costoDeInstalacion = 1000000,
         CapacidadInstalacion = 80000,
-        LocalidadDeInstalacion = "Buenos Aires"
+        LocalidadDeInstalacion = "Buenos Aires",
+        imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp"
     )
 
     // Instancia 2: Gimnasio
-    val gimnasio = Instalacion(
-        nombreDeInstalacion = "Gimnasio Fitness Plus",
-        descripcionDeInstalacion = "Gimnasio con equipos de última generación",
+    val salonMix = Instalacion(
+        nombreDeInstalacion = "Salon Mix",
+        descripcionDeInstalacion = "Esta es la descripcion del salon mix lalalalala lalalallaa llalalala la",
         costoDeInstalacion = 500000,
         CapacidadInstalacion = 200,
-        LocalidadDeInstalacion = "Madrid"
+        LocalidadDeInstalacion = "Madrid",
+        imagenPrincipal = "https://i.ibb.co/HGdW34k/foto-salon-mix.webp"
     )
 
     // Instancia 3: Teatro
-    val teatro = Instalacion(
+   /* val teatro = Instalacion(
         nombreDeInstalacion = "Teatro Nacional",
         descripcionDeInstalacion = "Teatro histórico",
         costoDeInstalacion = 800000,
         CapacidadInstalacion = 500,
         LocalidadDeInstalacion = "Ciudad de México"
-    )
+    )*/
 
     fun crearInstalacion(){
-        repoInstalacion.create(estadio)
-        repoInstalacion.create(gimnasio)
-        repoInstalacion.create(teatro)
+        repoInstalacion.create(salonDiamante)
+        repoInstalacion.create(salonMix)
+        //repoInstalacion.create(teatro)
     }
+
 
     @Autowired(required = true)
     lateinit var repoServicios: RepoServicios

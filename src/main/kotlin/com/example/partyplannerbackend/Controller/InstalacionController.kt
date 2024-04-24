@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController
 class InstalacionController(@Autowired val instalacionService: InstalacionService) {
 
     @GetMapping("/Instalaciones")
-    fun getInstalacionesActivas() = instalacionService.getInstalacionActivs()
+    fun getInstalacionesTodas() = instalacionService.getInstalacionesTodas()
+
+    @GetMapping("/InstalacionesActivas")
+    fun getInstalacionesActivas() = instalacionService.getInstalacionActivos()
 
     @GetMapping("/Instalaciones/{id} ")
     fun getInstalacionesActivas(id :Int) = instalacionService.getInstalacionById(id)
