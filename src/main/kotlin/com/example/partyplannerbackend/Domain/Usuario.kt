@@ -1,20 +1,21 @@
 package com.example.partyplannerbackend.Domain
 
 import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
+import java.time.LocalDateTime
 
 class Usuario (
     val nombreYApellido :String,
     val username: String,
     val contrasenia : String,
-    val eventosRealizados : MutableList<Evento> = mutableListOf(),
+    val eventos : MutableList<Evento> = mutableListOf(),
     val rol : Rol = Rol.CONSUMIDOR
 ): Entidad(){
 
-    fun aniadirEvento(evento: Evento) = eventosRealizados.add(evento)
+    fun aniadirEvento(evento: Evento) = eventos.add(evento)
 
 
 
-
+    fun eventosActivos() = eventos.filter { it.fechaEvento > LocalDateTime.now() }
 
 
     // Validaciones
