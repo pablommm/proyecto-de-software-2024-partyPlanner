@@ -1,19 +1,22 @@
 package com.example.partyplannerbackend.Boostrap
 
-
 import com.example.partyplannerbackend.Domain.*
+import com.example.partyplannerbackend.Repositorio.RepoEventos
 import com.example.partyplannerbackend.Repositorio.RepoInstalacion
 import com.example.partyplannerbackend.Repositorio.RepoServicios
 import com.example.partyplannerbackend.Repositorio.RepoUser
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class userMagic : InitializingBean {
     override fun afterPropertiesSet() {
         crearUser()
         crearInstalacion()
+        crearServicios()
+        crearEventos()
     }
 
     @Autowired(required = true)
@@ -36,7 +39,6 @@ class userMagic : InitializingBean {
     fun crearUser(){
         repoUser.create(usuario1)
         repoUser.create(usuarioPrueba)
-
     }
 
     @Autowired(required = true)
@@ -93,5 +95,22 @@ class userMagic : InitializingBean {
         repoServicios.create(limpieza)
     }
 
+    @Autowired(required = true)
+    lateinit var repoEventos: RepoEventos
+
+    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEvento = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(catering))
+
+    val fiestaCumpleaños = Evento(
+        nombreDelEvento = "Fiesta de cumpleaños de Juan",
+        lugar = salonDiamante,
+        fechaEvento = LocalDateTime.now(),
+        serviciosAdquiridos = mutableListOf(catering)
+    )
+
+    fun crearEventos(){
+        repoEventos.create(bodaMYB)
+        repoEventos.create(fiestaCumpleaños)
+
+    }
 
 }

@@ -25,7 +25,7 @@ class InstalacionService {
         repoInstalacion.delete(repoInstalacion.getById(id))
     }
 
-    fun crearUsuario(nuevaInstalacion: Instalacion): Instalacion {
+    fun crearInstalacion(nuevaInstalacion: Instalacion): Instalacion {
         repoInstalacion.create(nuevaInstalacion)
         return nuevaInstalacion
     }

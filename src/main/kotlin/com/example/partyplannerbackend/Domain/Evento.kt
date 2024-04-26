@@ -23,7 +23,7 @@ class Evento
     }
 
     override fun validar() {
-        TODO("Not yet implemented")
+        validarNombre()
     }
 
 

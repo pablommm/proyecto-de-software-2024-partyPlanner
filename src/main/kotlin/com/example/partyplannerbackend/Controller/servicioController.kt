@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 
 @RestController
 @CrossOrigin("*")
@@ -14,7 +15,7 @@ class servicioController(@Autowired val serviciosService: ServicioService) {
     @GetMapping("/servicios")
     fun getServicios() = serviciosService.getServicio()
 
-    @GetMapping("/servicios/{id}")
-    fun getServicios(id : Int) = serviciosService.getServiciorById(id)
+    @GetMapping("/servicios/")
+    fun getServicios(id : Optional<Int>) = serviciosService.getServiciorById(id.orElse(0))
 
 }

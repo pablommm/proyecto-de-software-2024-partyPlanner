@@ -22,7 +22,6 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
         return userService.getUser(id.orElse(0)) // Handle missing id
     }
 
-
     @PostMapping("/usuarioLogin")
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
     fun postUsuarioLoggin(@RequestBody user: UsuarioLoginDTO) = userService.getUsuarioLogin(user)
