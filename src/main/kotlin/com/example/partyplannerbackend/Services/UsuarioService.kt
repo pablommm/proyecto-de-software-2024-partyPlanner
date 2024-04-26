@@ -16,7 +16,7 @@ class UsuarioService {
     fun getUser() = repoUsuario.allInstances()
     //fun getUser(id: Int) = repoUsuario.getById(id)
 
-    fun getUserById(id: Int) = repoUsuario.getById(id)
+    fun getUser(id: Int) = repoUsuario.getById(id)
 
     fun borrarUsuario(id: Int) {
         repoUsuario.delete(repoUsuario.getById(id))

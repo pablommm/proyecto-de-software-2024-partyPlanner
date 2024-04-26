@@ -23,6 +23,7 @@ class userMagic : InitializingBean {
         nombreYApellido = "Jhon Smith",
         username = "Jsmith",
         contrasenia = "1234"
+
     )
 
     val usuario1 = Usuario(
