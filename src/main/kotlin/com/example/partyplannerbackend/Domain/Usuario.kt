@@ -8,7 +8,8 @@ class Usuario (
     val username: String,
     val contrasenia : String,
     val eventos : MutableList<Evento> = mutableListOf(),
-    val rol : Rol = Rol.CONSUMIDOR
+    val rol : Rol = Rol.CONSUMIDOR,
+    var saldo : Double = 0.0
 ): Entidad(){
 
     fun aniadirEvento(evento: Evento) = eventos.add(evento)

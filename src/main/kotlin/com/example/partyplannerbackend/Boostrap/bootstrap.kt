@@ -63,6 +63,15 @@ class userMagic : InitializingBean {
         LocalidadDeInstalacion = "Madrid",
         imagenPrincipal = "https://i.ibb.co/HGdW34k/foto-salon-mix.webp"
     )
+    val lugarGeneric = Instalacion(
+        nombreDeInstalacion = "Generic",
+        descripcionDeInstalacion = "",
+        costoDeInstalacion = 1,
+        CapacidadInstalacion = 1,
+        LocalidadDeInstalacion = "",
+        montoDeReserva = 0.0,
+        imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp"
+    )
 
     // Instancia 3: Teatro
    /* val teatro = Instalacion(
