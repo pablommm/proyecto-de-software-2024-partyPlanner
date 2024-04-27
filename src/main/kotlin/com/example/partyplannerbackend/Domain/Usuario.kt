@@ -14,6 +14,24 @@ class Usuario (
 
     fun aniadirEvento(evento: Evento) = eventos.add(evento)
 
+    fun tengoSaldoParaSeniar(instalacion: Instalacion) = saldo >= instalacion.costoDeInstalacion
+
+    fun pagoDeReserva(instalacion: Instalacion) {
+        saldo -= instalacion.montoDeReserva
+        instalacion.aniadirDineroDeReserva(instalacion.montoDeReserva)
+    }
+
+    fun reservarLugar(instalacion: Instalacion, fecha : LocalDateTime) {
+        instalacion.validarReserva(fecha)
+        puedoSeniar(instalacion)
+        pagoDeReserva(instalacion)
+    }
+
+     fun puedoSeniar(instalacion: Instalacion) {
+        if (!tengoSaldoParaSeniar(instalacion)) {
+            throw RuntimeException("No hay suficiente salgo para reservar")
+        }
+    }
 
 
     fun eventosActivos() = eventos.filter { it.fechaEvento > LocalDateTime.now() }

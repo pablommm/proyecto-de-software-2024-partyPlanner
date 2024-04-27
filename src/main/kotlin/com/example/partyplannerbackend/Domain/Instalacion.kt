@@ -1,6 +1,7 @@
 package com.example.partyplannerbackend.Domain
 
 import java.time.LocalDate
+import java.time.LocalDateTime
 import javax.print.DocFlavor.URL
 
 class Instalacion(
@@ -10,25 +11,28 @@ class Instalacion(
     val CapacidadInstalacion: Int,
     val LocalidadDeInstalacion : String,
     val montoDeReserva :Double = costoDeInstalacion * 0.15,
-    var fechasReservadas : MutableList<LocalDate> = mutableListOf(),
+    var recaudacionDeReservas : Double = 0.0,
+    var fechasReservadas : MutableList<LocalDateTime> = mutableListOf(),
     val imagenPrincipal : String
 ): Entidad() {
 
-    fun aniadirReserva(reserva : LocalDate) = fechasReservadas.add(reserva)
-    fun removerReserva(reserva : LocalDate) = fechasReservadas.remove(reserva)
+    fun aniadirReserva(reserva : LocalDateTime) = fechasReservadas.add(reserva)
+    fun removerReserva(reserva : LocalDateTime) = fechasReservadas.remove(reserva)
 
+    fun aniadirDineroDeReserva(recaudacion : Double) = recaudacionDeReservas +recaudacion
     // Validaciones
-    fun validarReserva(nuevaReserva :LocalDate) {
+    fun validarReserva(nuevaReserva :LocalDateTime) {
         validarFechaMayorActual(nuevaReserva)
         validarFechaDisponible(nuevaReserva)
     }
-    fun esMayorAlaFechaActual(nuevaReserva :LocalDate)= nuevaReserva >= LocalDate.now()
-    fun validarFechaMayorActual(nuevaReserva: LocalDate) {
+
+    fun esMayorAlaFechaActual(nuevaReserva : LocalDateTime)= nuevaReserva >= LocalDateTime.now()
+    fun validarFechaMayorActual(nuevaReserva: LocalDateTime) {
         if(!esMayorAlaFechaActual(nuevaReserva)) throw RuntimeException("La fecha debe ser mayor o igual a la actual")
     }
-    fun estaDisponible(nuevaReserva :LocalDate) = fechasReservadas.any { it == nuevaReserva }
+    fun estaDisponible(nuevaReserva :LocalDateTime) = fechasReservadas.any { it == nuevaReserva }
 
-    fun validarFechaDisponible(nuevaReserva: LocalDate) {
+    fun validarFechaDisponible(nuevaReserva: LocalDateTime) {
         if(!estaDisponible(nuevaReserva)) throw RuntimeException("La fecha no esta disponible")
     }
 
