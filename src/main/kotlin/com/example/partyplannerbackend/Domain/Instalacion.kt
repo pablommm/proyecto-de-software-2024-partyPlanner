@@ -8,6 +8,7 @@ class Instalacion(
     val costoDeInstalacion : Int,
     val CapacidadInstalacion: Int,
     val LocalidadDeInstalacion : String,
+    val montoDeReserva :Double = costoDeInstalacion * 0.15,
     val imagenPrincipal : String
 ): Entidad() {
 
