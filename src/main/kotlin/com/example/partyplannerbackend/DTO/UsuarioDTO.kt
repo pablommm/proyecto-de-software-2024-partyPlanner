@@ -12,8 +12,9 @@ data class UsuarioLoginDTO (
 fun Usuario.toDTO() = UsuarioLoginDTO(usuario = username, contrasenia = contrasenia)
 
 data class UsuarioCreateDTO(
-    val nombreYApellido: String,
+    val nombre:String,
+    val Apellido: String,
     val usuario: String,
     val pwd: String)
 
-fun UsuarioCreateDTO.toUsuario() = Usuario(nombreYApellido = nombreYApellido,  username =  usuario, contrasenia =  pwd)
+fun UsuarioCreateDTO.toUsuario() = Usuario(nombreYApellido = "$nombre"+" "+"$Apellido",  username =  usuario, contrasenia =  pwd)

@@ -1,6 +1,7 @@
 package com.example.partyplannerbackend.Controller
 
-import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
+import com.example.partyplannerbackend.DTO.*
+import com.example.partyplannerbackend.Domain.Evento
 import com.example.partyplannerbackend.Domain.Usuario
 import com.example.partyplannerbackend.Services.UsuarioService
 import io.swagger.v3.oas.annotations.Operation
@@ -25,5 +26,10 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     @PostMapping("/usuarioLogin")
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
     fun postUsuarioLoggin(@RequestBody user: UsuarioLoginDTO) = userService.getUsuarioLogin(user)
+
+    @PostMapping("/CrearUsuario")
+    fun create(@RequestBody usuario : UsuarioCreateDTO):Usuario {
+        return userService.crearUsuario(usuario.toUsuario())
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.partyplannerbackend.Domain
 
+import java.time.LocalDate
 import javax.print.DocFlavor.URL
 
 class Instalacion(
@@ -9,11 +10,28 @@ class Instalacion(
     val CapacidadInstalacion: Int,
     val LocalidadDeInstalacion : String,
     val montoDeReserva :Double = costoDeInstalacion * 0.15,
+    var fechasReservadas : MutableList<LocalDate> = mutableListOf(),
     val imagenPrincipal : String
 ): Entidad() {
 
+    fun aniadirReserva(reserva : LocalDate) = fechasReservadas.add(reserva)
+    fun removerReserva(reserva : LocalDate) = fechasReservadas.remove(reserva)
 
     // Validaciones
+    fun validarReserva(nuevaReserva :LocalDate) {
+        validarFechaMayorActual(nuevaReserva)
+        validarFechaDisponible(nuevaReserva)
+    }
+    fun esMayorAlaFechaActual(nuevaReserva :LocalDate)= nuevaReserva >= LocalDate.now()
+    fun validarFechaMayorActual(nuevaReserva: LocalDate) {
+        if(!esMayorAlaFechaActual(nuevaReserva)) throw RuntimeException("La fecha debe ser mayor o igual a la actual")
+    }
+    fun estaDisponible(nuevaReserva :LocalDate) = fechasReservadas.any { it == nuevaReserva }
+
+    fun validarFechaDisponible(nuevaReserva: LocalDate) {
+        if(!estaDisponible(nuevaReserva)) throw RuntimeException("La fecha no esta disponible")
+    }
+
     fun esValidoNombre() = nombreDeInstalacion.isEmpty()
     fun validarNombre() {
         if(esValidoNombre()) throw RuntimeException("El nombre esta vacio")

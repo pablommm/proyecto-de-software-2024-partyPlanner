@@ -25,7 +25,7 @@ class EventoService {
         repoEvento.delete(repoEvento.getById(id))
     }
 
-    fun crearServicio(nuevoEvento: Evento): Evento {
+    fun crearEvento(nuevoEvento: Evento): Evento {
         repoEvento.create(nuevoEvento)
         return nuevoEvento
     }
