@@ -30,7 +30,7 @@ class Instalacion(
     fun validarFechaMayorActual(nuevaReserva: LocalDateTime) {
         if(!esMayorAlaFechaActual(nuevaReserva)) throw RuntimeException("La fecha debe ser mayor o igual a la actual")
     }
-    fun estaDisponible(nuevaReserva :LocalDateTime) = fechasReservadas.any { it == nuevaReserva }
+    fun estaDisponible(nuevaReserva :LocalDateTime) = fechasReservadas.contains(nuevaReserva)
 
     fun validarFechaDisponible(nuevaReserva: LocalDateTime) {
         if(!estaDisponible(nuevaReserva)) throw RuntimeException("La fecha no esta disponible")

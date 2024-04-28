@@ -22,6 +22,7 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     @PostMapping("/CrearEventos")
     fun create(@RequestBody eventobody : eventoDTO): Evento {
         val instalacionid = instalacionService.getInstalacionById(eventobody.Lugar)
+        instalacionid.validarReserva(eventobody.fechaEvento)
         return eventoService.crearEvento(eventobody.toEvento(instalacionid))
     }
 
