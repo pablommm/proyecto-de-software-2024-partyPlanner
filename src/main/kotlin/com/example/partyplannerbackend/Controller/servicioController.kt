@@ -1,11 +1,14 @@
 package com.example.partyplannerbackend.Controller
 
+import com.example.partyplannerbackend.DTO.eventoDTO
+import com.example.partyplannerbackend.DTO.servicioDTO
+import com.example.partyplannerbackend.DTO.toEvento
+import com.example.partyplannerbackend.DTO.toServicio
+import com.example.partyplannerbackend.Domain.Evento
 import com.example.partyplannerbackend.Domain.Servicio
 import com.example.partyplannerbackend.Services.ServicioService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
@@ -17,5 +20,10 @@ class servicioController(@Autowired val serviciosService: ServicioService) {
 
     @GetMapping("/servicios/")
     fun getServicios(id : Optional<Int>) = serviciosService.getServiciorById(id.orElse(0))
+
+    @PostMapping("/CrearServicio")
+    fun create(@RequestBody servicioBody : servicioDTO): Servicio {
+        return serviciosService.crearServicio(servicioBody.toServicio())
+    }
 
 }
