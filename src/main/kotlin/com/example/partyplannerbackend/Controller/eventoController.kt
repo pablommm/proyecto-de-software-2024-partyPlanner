@@ -20,6 +20,7 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     @GetMapping("/eventosById/")
     fun getEventosById(id: Optional<Int>): Evento? = eventoService.getEventoById(id.orElse(0))
 
+     /* falta asignarle el evento al usuario */
     @PostMapping("/CrearEventos")
     fun create(@RequestBody eventobody : eventoDTO): Evento {
         val instalacionid = instalacionService.getInstalacionById(eventobody.Lugar)

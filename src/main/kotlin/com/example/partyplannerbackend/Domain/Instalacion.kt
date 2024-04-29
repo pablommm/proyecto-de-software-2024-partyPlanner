@@ -38,24 +38,27 @@ class Instalacion(
     }
     fun estaDisponible(nuevaReserva :Reserva): Boolean {
         /*
-        *   1 - ambas fechas esten dentro de la reserva anterior
-        *   dos casos que esten dentro de la reserva
-        *    caso fecha ini entre reserva && otro caso fecha fin dentro de la reserva anterior
         *   nueva reserva serva contenga dentro del rango un evento existe
         *
         * testear y validar si faltan casos
         * */
         for (reserva in fechasReservadas) {
-        // 1
+        // 1  ambas fechas esten dentro de la reserva anterior
         if(nuevaReserva.fechaIni > reserva.fechaIni && nuevaReserva.fechaFin< reserva.fechaFin){
-            throw RuntimeException("aaa")
+            throw RuntimeException("El lugar ya esta reservado en las fechas seleccionadas.")
         }
+         // 2   caso fecha ini entre reserva
         if(nuevaReserva.fechaIni < reserva.fechaFin && nuevaReserva.fechaFin > reserva.fechaFin){
             throw RuntimeException("bbb")
 
         }
+         //3 caso fecha fin dentro de la reserva anterior
         if(nuevaReserva.fechaIni < reserva.fechaIni && nuevaReserva.fechaFin > reserva.fechaIni){
             throw RuntimeException("ccc")
+        }
+        // 4
+        if(nuevaReserva.fechaIni < reserva.fechaIni && nuevaReserva.fechaFin > reserva.fechaFin){
+            throw RuntimeException("ddd")
         }
 
         }
