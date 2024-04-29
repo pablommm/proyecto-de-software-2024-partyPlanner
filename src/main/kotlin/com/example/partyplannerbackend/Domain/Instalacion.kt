@@ -12,28 +12,62 @@ class Instalacion(
     val LocalidadDeInstalacion : String,
     val montoDeReserva :Double = costoDeInstalacion * 0.15,
     var recaudacionDeReservas : Double = 0.0,
-    var fechasReservadas : MutableList<LocalDateTime> = mutableListOf(),
+    var fechasReservadas : MutableList<Reserva> = mutableListOf(),
     val imagenPrincipal : String
 ): Entidad() {
 
-    fun aniadirReserva(reserva : LocalDateTime) = fechasReservadas.add(reserva)
-    fun removerReserva(reserva : LocalDateTime) = fechasReservadas.remove(reserva)
+    fun aniadirReserva(reserva : Reserva) = fechasReservadas.add(reserva)
+    fun removerReserva(reserva : Reserva) = fechasReservadas.remove(reserva)
 
     fun aniadirDineroDeReserva(recaudacion : Double) = recaudacionDeReservas +recaudacion
     // Validaciones
-    fun validarReserva(nuevaReserva :LocalDateTime) {
+    fun validarReserva(nuevaReserva :Reserva) {
         validarFechaMayorActual(nuevaReserva)
-        validarFechaDisponible(nuevaReserva)
+        validarFechaMayorIni(nuevaReserva)
+        estaDisponible(nuevaReserva)
+        aniadirReserva(nuevaReserva)
     }
 
-    fun esMayorAlaFechaActual(nuevaReserva : LocalDateTime)= nuevaReserva >= LocalDateTime.now()
-    fun validarFechaMayorActual(nuevaReserva: LocalDateTime) {
+    fun esMayorAlaFechaActual(nuevaReserva : Reserva)= nuevaReserva.fechaIni >= LocalDateTime.now()
+    fun esLaFechaFinEsMayorALaIni(nuevaReserva : Reserva)= nuevaReserva.fechaFin > nuevaReserva.fechaIni
+    fun validarFechaMayorIni(nuevaReserva: Reserva) {
+        if(!esLaFechaFinEsMayorALaIni(nuevaReserva)) throw RuntimeException("La fecha debe ser mayor o igual a la actual")
+    }
+    fun validarFechaMayorActual(nuevaReserva: Reserva) {
         if(!esMayorAlaFechaActual(nuevaReserva)) throw RuntimeException("La fecha debe ser mayor o igual a la actual")
     }
-    fun estaDisponible(nuevaReserva :LocalDateTime) = fechasReservadas.contains(nuevaReserva)
+    fun estaDisponible(nuevaReserva :Reserva): Boolean {
+        /*
+        *   1 - ambas fechas esten dentro de la reserva anterior
+        *   dos casos que esten dentro de la reserva
+        *    caso fecha ini entre reserva && otro caso fecha fin dentro de la reserva anterior
+        *   nueva reserva serva contenga dentro del rango un evento existe
+        *
+        * testear y validar si faltan casos
+        * */
+        for (reserva in fechasReservadas) {
+        // 1
+        if(nuevaReserva.fechaIni > reserva.fechaIni && nuevaReserva.fechaFin< reserva.fechaFin){
+            throw RuntimeException("aaa")
+        }
+        if(nuevaReserva.fechaIni < reserva.fechaFin && nuevaReserva.fechaFin > reserva.fechaFin){
+            throw RuntimeException("bbb")
 
-    fun validarFechaDisponible(nuevaReserva: LocalDateTime) {
-        if(!estaDisponible(nuevaReserva)) throw RuntimeException("La fecha no esta disponible")
+        }
+        if(nuevaReserva.fechaIni < reserva.fechaIni && nuevaReserva.fechaFin > reserva.fechaIni){
+            throw RuntimeException("ccc")
+        }
+
+        }
+        return true
+    }
+
+
+
+
+
+    fun validarFechaDisponible(nuevaReserva: Reserva) {
+      //  if(estaDisponible(nuevaReserva)) throw RuntimeException("La fecha no esta disponible")
     }
 
     fun esValidoNombre() = nombreDeInstalacion.isEmpty()
@@ -63,7 +97,7 @@ class Instalacion(
 
 
 
-    override fun validar() {
+     override fun validar() {
         validarLocalidad()
         validardescripcionDeInstalacion()
         validarNombre()

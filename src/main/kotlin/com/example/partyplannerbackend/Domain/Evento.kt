@@ -5,8 +5,9 @@ import java.time.LocalDateTime
 class Evento
     (val nombreDelEvento: String,
      val lugar: Instalacion,
-     val fechaEvento: LocalDateTime,
-     //  val cantidadDeInvitados :Int, de momento se deja
+     val fechaEventoIni: LocalDateTime,
+     val fechaEventoFin: LocalDateTime,
+    //  val cantidadDeInvitados :Int, de momento se deja
      var serviciosAdquiridos : MutableList<Servicio> = mutableListOf()) :Entidad(){
 
 

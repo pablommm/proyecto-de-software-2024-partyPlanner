@@ -107,12 +107,13 @@ class userMagic : InitializingBean {
     @Autowired(required = true)
     lateinit var repoEventos: RepoEventos
 
-    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEvento = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(catering))
+    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(catering))
 
     val fiestaCumpleaños = Evento(
         nombreDelEvento = "Fiesta de cumpleaños de Juan",
         lugar = salonDiamante,
-        fechaEvento = LocalDateTime.now(),
+        fechaEventoIni = LocalDateTime.now(),
+        fechaEventoFin = LocalDateTime.now(),
         serviciosAdquiridos = mutableListOf(catering)
     )
 

@@ -21,7 +21,7 @@ class Usuario (
         instalacion.aniadirDineroDeReserva(instalacion.montoDeReserva)
     }
 
-    fun reservarLugar(instalacion: Instalacion, fecha : LocalDateTime) {
+    fun reservarLugar(instalacion: Instalacion, fecha : Reserva) {
         instalacion.validarReserva(fecha)
         puedoSeniar(instalacion)
         pagoDeReserva(instalacion)
@@ -34,7 +34,7 @@ class Usuario (
     }
 
 
-    fun eventosActivos() = eventos.filter { it.fechaEvento > LocalDateTime.now() }
+    fun eventosActivos() = eventos.filter { it.fechaEventoIni > LocalDateTime.now() }
 
 
     // Validaciones
