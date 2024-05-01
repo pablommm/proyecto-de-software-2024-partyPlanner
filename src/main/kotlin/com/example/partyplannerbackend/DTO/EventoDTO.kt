@@ -10,7 +10,8 @@ data class eventoDTO(
     val Lugar : Int,
     val fechaEventoIni : LocalDateTime,
     val fechaEventoFin : LocalDateTime,
-    val serviciosAdquiridos : MutableList<Servicio> // ver si se pasa id o objeto completo
+    val serviciosAdquiridos : MutableList<Servicio>,
+    val owner : Int// ver si se pasa id o objeto completo
     )
 
 

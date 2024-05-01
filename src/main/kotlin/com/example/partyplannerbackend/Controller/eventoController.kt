@@ -6,13 +6,15 @@ import com.example.partyplannerbackend.Domain.Evento
 import com.example.partyplannerbackend.Domain.Reserva
 import com.example.partyplannerbackend.Services.EventoService
 import com.example.partyplannerbackend.Services.InstalacionService
+import com.example.partyplannerbackend.Services.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
 @CrossOrigin("*")
-class eventoController(@Autowired val eventoService: EventoService,@Autowired val instalacionService: InstalacionService) {
+class eventoController(@Autowired val eventoService: EventoService,@Autowired val instalacionService: InstalacionService,
+@Autowired val usuarioService: UsuarioService ) {
 
     @GetMapping("/eventos")
     fun getEventos() = eventoService.getEvento()
@@ -24,8 +26,14 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     @PostMapping("/CrearEventos")
     fun create(@RequestBody eventobody : eventoDTO): Evento {
         val instalacionid = instalacionService.getInstalacionById(eventobody.Lugar)
+        val usuario = usuarioService.getUser(eventobody.owner)
         instalacionid.validarReserva(Reserva(eventobody.fechaEventoIni,eventobody.fechaEventoFin))
-        return eventoService.crearEvento(eventobody.toEvento(instalacionid))
-    }
+         val evento = eventoService.crearEvento(eventobody.toEvento(instalacionid))
+
+         usuario.aniadirEvento(evento)
+         return evento
 
 }
+
+
+    }
