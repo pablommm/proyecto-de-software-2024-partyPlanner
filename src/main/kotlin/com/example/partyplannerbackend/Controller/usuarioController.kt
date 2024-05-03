@@ -29,4 +29,13 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
         return userService.crearUsuario(usuario.toUsuario())
     }
 
+    @GetMapping("/MisEventos/{id}")
+        fun getMisEvento(id: Int): MutableList<Evento> {
+           return userService.getEventos(id)
+        }
+
+    }
+
+
+
 }

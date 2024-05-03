@@ -22,6 +22,8 @@ class UsuarioService {
         repoUsuario.delete(repoUsuario.getById(id))
     }
 
+    fun getEventos(id :Int) = repoUsuario.listaDeEventos(id)
+
     fun crearUsuario(nuevoUsuario: Usuario): Usuario {
         repoUsuario.create(nuevoUsuario)
         return nuevoUsuario

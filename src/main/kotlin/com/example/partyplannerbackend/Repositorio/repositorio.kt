@@ -66,6 +66,7 @@ open class RepoUser : Repositorio<Usuario>(){
 
     fun getUserPass(userIdentificador: UsuarioLoginDTO) = elementos.filter { user -> user.accesoUsuario(userIdentificador) }
 
+    fun listaDeEventos(id: Int) = getById(id).eventos
 }
 
 @Repository
