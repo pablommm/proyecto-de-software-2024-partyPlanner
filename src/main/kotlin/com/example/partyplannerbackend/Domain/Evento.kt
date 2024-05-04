@@ -1,17 +1,29 @@
 package com.example.partyplannerbackend.Domain
 
+import jakarta.persistence.*
 import java.time.LocalDateTime
 
-class Evento
-    (val nombreDelEvento: String,
+@Entity
+@Table(name = "eventos")
+class Evento(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+    @Column
+    val nombreDelEvento: String,
+    @OneToOne
      val lugar: Instalacion,
+    @Column
      val fechaEventoIni: LocalDateTime,
+    @Column
      val fechaEventoFin: LocalDateTime,
     //  val cantidadDeInvitados :Int, de momento se deja
-     var serviciosAdquiridos : MutableList<Servicio> = mutableListOf()) :Entidad(){
+     @OneToMany(fetch = FetchType.EAGER)
+     var serviciosAdquiridos : MutableList<Servicio> = mutableListOf()){
 
 
-// el evento debe sumar la lista de costo, generar un qr o target por evento
+
+    // el evento debe sumar la lista de costo, generar un qr o target por evento
      fun costoTotalDeServicio() = serviciosAdquiridos.sumOf { it.monto }
 
     fun costoDelEvento() = costoTotalDeServicio() + lugar.costoDeInstalacion
@@ -23,7 +35,7 @@ class Evento
         if(esValidoNombre()) throw RuntimeException("El nombre debe ser vacio")
     }
 
-    override fun validar() {
+     fun validar() {
         validarNombre()
     }
 

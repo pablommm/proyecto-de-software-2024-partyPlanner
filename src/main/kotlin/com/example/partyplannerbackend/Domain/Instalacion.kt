@@ -1,20 +1,36 @@
 package com.example.partyplannerbackend.Domain
 
+import jakarta.persistence.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.print.DocFlavor.URL
-
+@Entity
+@Table(name = "instalacion")
 class Instalacion(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+    @Column
     val nombreDeInstalacion: String,
+    @Column
     val descripcionDeInstalacion: String,
+    @Column
     val costoDeInstalacion : Int,
+    @Column
     val CapacidadInstalacion: Int,
+    @Column
     val LocalidadDeInstalacion : String,
+    @Column
     val montoDeReserva :Double = costoDeInstalacion * 0.15,
+    @Column
     var recaudacionDeReservas : Double = 0.0,
+    @OneToMany(fetch = FetchType.EAGER)
+    @Column
     var fechasReservadas : MutableList<Reserva> = mutableListOf(),
+    @Column
     val imagenPrincipal : String
-): Entidad() {
+) {
+
 
     fun aniadirReserva(reserva : Reserva) = fechasReservadas.add(reserva)
     fun removerReserva(reserva : Reserva) = fechasReservadas.remove(reserva)
@@ -100,7 +116,7 @@ class Instalacion(
 
 
 
-     override fun validar() {
+      fun validar() {
         validarLocalidad()
         validardescripcionDeInstalacion()
         validarNombre()
