@@ -9,13 +9,13 @@ class Servicio(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val nombreDeServicio: String,
+    val nombreDeServicio: String= "",
     @Column
-    val descripcion: String,
+    val descripcion: String= "",
     @Column
     val categoria: Categoria = Categoria.GASTRONOMIA,
     @Column
-    val monto : Double
+    val monto : Double = 0.0
 ){
     fun esValidoNombre() = nombreDeServicio.isEmpty()
     fun validarnombreDeServicio(){

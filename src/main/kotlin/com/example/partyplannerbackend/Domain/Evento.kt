@@ -10,13 +10,14 @@ class Evento(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val nombreDelEvento: String,
+    val nombreDelEvento: String= "",
     @OneToOne
-     val lugar: Instalacion,
+    @JoinColumn(name = "instalacion_id")
+    val lugar: Instalacion = Instalacion(),
     @Column
-     val fechaEventoIni: LocalDateTime,
+     val fechaEventoIni: LocalDateTime = LocalDateTime.now(),
     @Column
-     val fechaEventoFin: LocalDateTime,
+     val fechaEventoFin: LocalDateTime =LocalDateTime.now(),
     //  val cantidadDeInvitados :Int, de momento se deja
      @OneToMany(fetch = FetchType.EAGER)
      var serviciosAdquiridos : MutableList<Servicio> = mutableListOf()){

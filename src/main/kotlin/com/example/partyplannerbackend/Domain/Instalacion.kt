@@ -11,24 +11,24 @@ class Instalacion(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val nombreDeInstalacion: String,
+    val nombreDeInstalacion: String = "",
     @Column
-    val descripcionDeInstalacion: String,
+    val descripcionDeInstalacion: String= "",
     @Column
-    val costoDeInstalacion : Int,
+    val costoDeInstalacion : Int =1,
     @Column
-    val CapacidadInstalacion: Int,
+    val CapacidadInstalacion: Int=1,
     @Column
-    val LocalidadDeInstalacion : String,
+    val LocalidadDeInstalacion : String = "",
     @Column
     val montoDeReserva :Double = costoDeInstalacion * 0.15,
     @Column
     var recaudacionDeReservas : Double = 0.0,
     @OneToMany(fetch = FetchType.EAGER)
-    @Column
+    @JoinColumn(name = "reserva_id")
     var fechasReservadas : MutableList<Reserva> = mutableListOf(),
     @Column
-    val imagenPrincipal : String
+    val imagenPrincipal : String = ""
 ) {
 
 

@@ -12,19 +12,22 @@ class Usuario (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val nombreYApellido :String,
+    val nombreYApellido :String= "",
     @Column
-    val username: String,
+    val username: String = "",
     @Column
-    val contrasenia : String,
+    val contrasenia : String= "",
     @OneToMany(fetch = FetchType.LAZY)
-    @Column
+    //@JoinColumn(name = "evento_id")
     val eventos : MutableList<Evento> = mutableListOf(),
     @Column
     val rol : Rol = Rol.CONSUMIDOR,
     @Column
     var saldo : Double = 0.0
 ){
+
+
+
 
     fun aniadirEvento(evento: Evento) = eventos.add(evento)
 

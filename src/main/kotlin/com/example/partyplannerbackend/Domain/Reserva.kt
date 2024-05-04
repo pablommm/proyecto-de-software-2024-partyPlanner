@@ -10,8 +10,8 @@ class Reserva(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val fechaIni:LocalDateTime,
+    val fechaIni:LocalDateTime = LocalDateTime.now(),
     @Column
-    val fechaFin:LocalDateTime) {
+    val fechaFin:LocalDateTime = LocalDateTime.now() ){
 
 }
