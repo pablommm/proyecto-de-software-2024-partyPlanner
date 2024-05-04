@@ -20,7 +20,7 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     fun getEventos() = eventoService.getEvento()
 
     @GetMapping("/eventosById/")
-    fun getEventosById(id: Optional<Int>): Evento? = eventoService.getEventoById(id.orElse(0))
+    fun getEventosById(@PathVariable id: Optional<Int>): Evento? = eventoService.getEventoById(id.orElse(0))
 
      /* falta asignarle el evento al usuario */
     @PostMapping("/CrearEventos")
@@ -29,11 +29,10 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
         val usuario = usuarioService.getUser(eventobody.owner)
         instalacionid.validarReserva(Reserva(eventobody.fechaEventoIni,eventobody.fechaEventoFin))
          val evento = eventoService.crearEvento(eventobody.toEvento(instalacionid))
-
          usuario.aniadirEvento(evento)
          return evento
 
-}
-
-
     }
+
+
+}

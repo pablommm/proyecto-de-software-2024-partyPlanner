@@ -18,8 +18,8 @@ class servicioController(@Autowired val serviciosService: ServicioService) {
     @GetMapping("/servicios")
     fun getServicios() = serviciosService.getServicio()
 
-    @GetMapping("/servicios/")
-    fun getServicios(id : Optional<Int>) = serviciosService.getServiciorById(id.orElse(0))
+    @GetMapping("/servicios/{{id}}")
+    fun getServicios(@PathVariable id : Int) = serviciosService.getServiciorById(id)
 
     @PostMapping("/CrearServicio")
     fun create(@RequestBody servicioBody : servicioDTO): Servicio {

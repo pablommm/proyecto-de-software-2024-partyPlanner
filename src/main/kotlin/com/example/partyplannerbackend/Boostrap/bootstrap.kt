@@ -22,24 +22,7 @@ class userMagic : InitializingBean {
     @Autowired(required = true)
     lateinit var repoUser: RepoUser
 
-    val usuarioPrueba = Usuario(
-        nombreYApellido = "Jhon Smith",
-        username = "Jsmith",
-        contrasenia = "1234"
 
-    )
-
-    val usuario1 = Usuario(
-        nombreYApellido = "Juan perez",
-        username = "Jperez",
-        contrasenia = "1234",
-        rol = Rol.ADMINISTRADOR
-    )
-
-    fun crearUser(){
-        repoUser.create(usuario1)
-        repoUser.create(usuarioPrueba)
-    }
 
     @Autowired(required = true)
     lateinit var repoInstalacion: RepoInstalacion
@@ -121,6 +104,24 @@ class userMagic : InitializingBean {
         repoEventos.create(bodaMYB)
         repoEventos.create(fiestaCumpleaños)
 
+    }
+    val usuarioPrueba = Usuario(
+        nombreYApellido = "Jhon Smith",
+        username = "Jsmith",
+        contrasenia = "1234",
+
+    )
+
+    val usuario1 = Usuario(
+        nombreYApellido = "Juan perez",
+        username = "Jperez",
+        contrasenia = "1234",
+        rol = Rol.ADMINISTRADOR,
+        eventos = mutableListOf(bodaMYB))
+
+    fun crearUser(){
+        repoUser.create(usuario1)
+        repoUser.create(usuarioPrueba)
     }
 
 }
