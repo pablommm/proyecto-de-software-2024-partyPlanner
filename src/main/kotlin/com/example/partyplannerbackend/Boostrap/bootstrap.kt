@@ -1,10 +1,7 @@
 package com.example.partyplannerbackend.Boostrap
 
 import com.example.partyplannerbackend.Domain.*
-import com.example.partyplannerbackend.Repositorio.RepoEventos
-import com.example.partyplannerbackend.Repositorio.RepoInstalacion
-import com.example.partyplannerbackend.Repositorio.RepoServicios
-import com.example.partyplannerbackend.Repositorio.RepoUser
+import com.example.partyplannerbackend.Repositorio.*
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -20,12 +17,16 @@ class userMagic : InitializingBean {
     }
 
     @Autowired(required = true)
-    lateinit var repoUser: RepoUser
-
-
+    lateinit var repoUser: usuarioRepository
 
     @Autowired(required = true)
-    lateinit var repoInstalacion: RepoInstalacion
+    lateinit var repoInstalacion: InstalacionRepository
+
+    @Autowired(required = true)
+    lateinit var repoServicios: ServicioRepository
+
+    @Autowired(required = true)
+    lateinit var repoEventos: EventoRepository
 
     // Instancia 1: Estadio
     val salonDiamante = Instalacion(
@@ -66,14 +67,10 @@ class userMagic : InitializingBean {
     )*/
 
     fun crearInstalacion(){
-        repoInstalacion.create(salonDiamante)
-        repoInstalacion.create(salonMix)
+        repoInstalacion.save(salonDiamante)
+        repoInstalacion.save(salonMix)
         //repoInstalacion.create(teatro)
     }
-
-
-    @Autowired(required = true)
-    lateinit var repoServicios: RepoServicios
 
     // Servicios
     val catering = Servicio(nombreDeServicio = "Servicio de catering", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.GASTRONOMIA, monto = 5000.0)
@@ -82,13 +79,11 @@ class userMagic : InitializingBean {
 
 
     fun crearServicios(){
-        repoServicios.create(catering)
-        repoServicios.create(seguridad)
-        repoServicios.create(limpieza)
+        repoServicios.save(catering)
+        repoServicios.save(seguridad)
+        repoServicios.save(limpieza)
     }
 
-    @Autowired(required = true)
-    lateinit var repoEventos: RepoEventos
 
     val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(catering))
 
@@ -101,8 +96,8 @@ class userMagic : InitializingBean {
     )
 
     fun crearEventos(){
-        repoEventos.create(bodaMYB)
-        repoEventos.create(fiestaCumpleaños)
+        repoEventos.save(bodaMYB)
+        repoEventos.save(fiestaCumpleaños)
 
     }
     val usuarioPrueba = Usuario(
@@ -120,8 +115,8 @@ class userMagic : InitializingBean {
         eventos = mutableListOf(bodaMYB))
 
     fun crearUser(){
-        repoUser.create(usuario1)
-        repoUser.create(usuarioPrueba)
+        repoUser.save(usuario1)
+        repoUser.save(usuarioPrueba)
     }
 
 }

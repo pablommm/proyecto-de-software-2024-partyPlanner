@@ -28,7 +28,9 @@ class Instalacion(
     @JoinColumn(name = "reserva_id")
     var fechasReservadas : MutableList<Reserva> = mutableListOf(),
     @Column
-    val imagenPrincipal : String = ""
+    val imagenPrincipal : String = "",
+    @Column
+    var activo : Boolean = true
 ) {
 
 

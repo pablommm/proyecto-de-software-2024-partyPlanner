@@ -1,9 +1,7 @@
 package com.example.partyplannerbackend.Services
 
 import com.example.partyplannerbackend.Domain.Servicio
-import com.example.partyplannerbackend.Domain.Usuario
-import com.example.partyplannerbackend.Repositorio.RepoServicios
-import com.example.partyplannerbackend.Repositorio.RepoUser
+import com.example.partyplannerbackend.Repositorio.ServicioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -11,19 +9,19 @@ import org.springframework.stereotype.Service
 class ServicioService {
 
     @Autowired
-    lateinit var repoService: RepoServicios
+    lateinit var repoService: ServicioRepository
 
     fun getServicio() = repoService.allInstances()
     //fun getUser(id: Int) = repoUsuario.getById(id)
 
-    fun getServiciorById(id: Int) = repoService.getById(id)
+    fun getServiciorById(id: Long) = repoService.getById(id)
 
-    fun borrarServicio(id: Int) {
-        repoService.delete(repoService.getById(id))
+    fun borrarServicio(id: Long) {
+        repoService.delete(id)
     }
 
     fun crearServicio(nuevoServicio: Servicio): Servicio {
-        repoService.create(nuevoServicio)
+        repoService.save(nuevoServicio)
         return nuevoServicio
     }
 

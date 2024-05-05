@@ -17,7 +17,7 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     fun getUsuario() = userService.getUser()
 
     @GetMapping("/UsuarioBqs/{id}")
-    fun getUsuarioByID(@PathVariable id: Int) = userService.getUser(id)
+    fun getUsuarioByID(@PathVariable id: Long) = userService.getUser(id)
 
 
     @PostMapping("/usuarioLogin")
@@ -30,7 +30,7 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     }
 
     @GetMapping("/MisEventos/{id}")
-        fun getMisEvento(@PathVariable id: Int): MutableList<Evento> {
+        fun getMisEvento(@PathVariable id: Long): MutableList<Evento> {
            return userService.getEventos(id)
         }
 

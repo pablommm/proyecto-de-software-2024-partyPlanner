@@ -10,5 +10,11 @@ interface usuarioRepository : CrudRepository<Usuario, Long> {
 
     fun getUserPass(userIdentificador: UsuarioLoginDTO) = findAll().filter { user -> user.accesoUsuario(userIdentificador) }
 
+    fun allInstances() = findAll()
+
+
+    fun getById(id : Long) = findById(id)
+
+    fun delete(id: Long) = deleteById(id)
 }
 

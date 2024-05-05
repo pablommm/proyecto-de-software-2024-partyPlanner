@@ -2,7 +2,7 @@ version: '3.8'
 services:
   db:
     image: postgres:16.2
-    container_name: partyPlanner-sql
+    container_name: partyplanner-sql
     restart: always
     environment:
       - POSTGRES_USER=postgres
@@ -15,7 +15,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin4_container_partyPlanner
+    container_name: pgadmin4_container_partyplanner
     restart: always
     ports:
       - "5050:80"

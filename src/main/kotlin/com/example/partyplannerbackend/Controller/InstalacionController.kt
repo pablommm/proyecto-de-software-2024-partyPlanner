@@ -20,7 +20,7 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     fun getInstalacionesActivas() = instalacionService.getInstalacionActivos()
 
     @GetMapping("/Instalaciones/")
-    fun getInstalacionesActivas(@PathVariable id : Int): Instalacion? {
+    fun getInstalacionesActivas(@PathVariable id : Long): Optional<Instalacion> {
         return instalacionService.getInstalacionById(id)
     }
 }

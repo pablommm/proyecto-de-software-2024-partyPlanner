@@ -1,9 +1,7 @@
 package com.example.partyplannerbackend.Services
 
 import com.example.partyplannerbackend.Domain.Instalacion
-import com.example.partyplannerbackend.Domain.Usuario
-import com.example.partyplannerbackend.Repositorio.RepoInstalacion
-import com.example.partyplannerbackend.Repositorio.RepoUser
+import com.example.partyplannerbackend.Repositorio.InstalacionRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -12,21 +10,21 @@ import org.springframework.stereotype.Service
 class InstalacionService {
 
     @Autowired
-    lateinit var repoInstalacion: RepoInstalacion
+    lateinit var repoInstalacion: InstalacionRepository
 
     fun getInstalacionesTodas() = repoInstalacion.allInstances()
     fun getInstalacionActivos() = repoInstalacion.allInstancesActivos()
 
     //fun getInstalacion(id: Int) = repoUsuario.getById(id)
 
-    fun getInstalacionById(id: Int) = repoInstalacion.getById(id)
+    fun getInstalacionById(id: Long) = repoInstalacion.getById(id)
 
-    fun borrarInstalacion(id: Int) {
-        repoInstalacion.delete(repoInstalacion.getById(id))
+    fun borrarInstalacion(id: Long) {
+        repoInstalacion.delete(id)
     }
 
     fun crearInstalacion(nuevaInstalacion: Instalacion): Instalacion {
-        repoInstalacion.create(nuevaInstalacion)
+        repoInstalacion.save(nuevaInstalacion)
         return nuevaInstalacion
     }
 

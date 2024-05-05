@@ -20,7 +20,10 @@ class Evento(
      val fechaEventoFin: LocalDateTime =LocalDateTime.now(),
     //  val cantidadDeInvitados :Int, de momento se deja
      @OneToMany(fetch = FetchType.EAGER)
-     var serviciosAdquiridos : MutableList<Servicio> = mutableListOf()){
+     var serviciosAdquiridos : MutableList<Servicio> = mutableListOf(),
+     @Column
+     var activo : Boolean = true
+){
 
 
 
