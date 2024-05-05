@@ -12,7 +12,7 @@ import java.util.*
 @RestController
 @CrossOrigin("*")
 class InstalacionController(@Autowired val instalacionService: InstalacionService) {
- /*
+
     @GetMapping("/Instalaciones")
     fun getInstalacionesTodas() = instalacionService.getInstalacionesTodas()
 
@@ -22,5 +22,5 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     @GetMapping("/Instalaciones/")
     fun getInstalacionesActivas(@PathVariable id : Long): Optional<Instalacion> {
         return instalacionService.getInstalacionById(id)
-    }*/
+    }
 }

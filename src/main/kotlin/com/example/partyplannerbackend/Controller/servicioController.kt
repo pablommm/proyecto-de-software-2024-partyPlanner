@@ -14,16 +14,16 @@ import java.util.*
 @RestController
 @CrossOrigin("*")
 class servicioController(@Autowired val serviciosService: ServicioService) {
-/*
+
     @GetMapping("/servicios")
     fun getServicios() = serviciosService.getServicio()
 
-    @GetMapping("/servicios/{{id}}")
+    @GetMapping("/servicios/{id}")
     fun getServicios(@PathVariable id : Long) = serviciosService.getServiciorById(id)
 
     @PostMapping("/CrearServicio")
     fun create(@RequestBody servicioBody : servicioDTO): Servicio {
         return serviciosService.crearServicio(servicioBody.toServicio())
     }
-*/
+
 }

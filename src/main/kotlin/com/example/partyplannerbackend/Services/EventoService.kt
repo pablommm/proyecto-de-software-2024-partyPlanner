@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service
 
 @Service
 class EventoService {
- /*
+
     @Autowired
     lateinit var repoEvento: EventoRepository
 
-    fun getEvento() = repoEvento.allInstances()
+    fun getEvento() = repoEvento.findAll()
 
-    fun getEventosActivos() = repoEvento.allInstancesActivos()
+    fun getEventosActivos() = repoEvento.findAll().filter { it.activo }
 
-    fun getEventoById(id: Long) = repoEvento.getById(id)
+    fun getEventoById(id: Long) = repoEvento.findById(id)
 
     fun crearEvento(nuevoEvento: Evento): Evento {
         repoEvento.save(nuevoEvento)
@@ -26,8 +26,7 @@ class EventoService {
     // aun no es claro si agregaremos la funcion para  editar al usuario,
 // pero almenos ya la tenemos agregada
     //
-    fun updateUser(usuario: Usuario) = repoUsuario.update(usuario)
-  */
+
 
 
 }

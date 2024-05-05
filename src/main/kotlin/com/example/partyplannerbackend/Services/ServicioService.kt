@@ -10,12 +10,10 @@ class ServicioService {
 
     @Autowired
     lateinit var repoService: ServicioRepository
- /*
-    fun getServicio() = repoService.allInstances()
-    fun getUser(id: Int) = repoUsuario.getById(id)
 
-    fun getServiciorById(id: Long) = repoService.getById(id)
+    fun getServicio() = repoService.findAll()
 
+    fun getServiciorById(id: Long) = repoService.findById(id)
 
     fun crearServicio(nuevoServicio: Servicio): Servicio {
         repoService.save(nuevoServicio)
@@ -23,6 +21,6 @@ class ServicioService {
     }
 
 
-*/
+
 
 }

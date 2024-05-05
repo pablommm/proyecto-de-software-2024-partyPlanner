@@ -15,7 +15,7 @@ import java.util.*
 @CrossOrigin("*")
 class eventoController(@Autowired val eventoService: EventoService,@Autowired val instalacionService: InstalacionService,
 @Autowired val usuarioService: UsuarioService ) {
-    /*
+
     @GetMapping("/eventos")
     fun getEventos() = eventoService.getEvento()
 
@@ -33,6 +33,6 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
          return evento
 
     }
-    */
+
 
 }
