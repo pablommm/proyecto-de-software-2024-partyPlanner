@@ -14,15 +14,11 @@ class UsuarioService {
     @Autowired
     lateinit var repoUsuario : usuarioRepository
 
-    fun getUser() = repoUsuario.allInstances()
-    fun getUser(id: Long) = repoUsuario.getById(id)
+    fun getUser() = repoUsuario.findAll()
+       fun getUser(id: Long) = repoUsuario.findById(id)
 
 
-    fun borrarUsuario(id: Long) {
-        repoUsuario.delete(id)
-    }
-
-    fun getEventos(id :Long) = repoUsuario.listaDeEventos(id)
+    fun getEventos(id :Long) = repoUsuario.findById(id).get().eventos
 
     fun crearUsuario(nuevoUsuario: Usuario): Usuario {
         repoUsuario.save(nuevoUsuario)
@@ -32,14 +28,9 @@ class UsuarioService {
     //fun updateUser(usuario: Usuario) = repoUsuario.update(usuario)
 
 
-    fun getUsuarioLogin(user: UsuarioLoginDTO): Usuario {
-        if(repoUsuario.getUserPass(user).isNotEmpty()) {
-            return repoUsuario.getUserPass(user).first()
-        } else {
 
-            throw RuntimeException("Los datos ingresados son incorrectos")
-        }
-    }
+
+
 
 
 }

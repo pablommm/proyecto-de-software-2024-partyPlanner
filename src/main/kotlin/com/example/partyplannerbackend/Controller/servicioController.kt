@@ -14,7 +14,7 @@ import java.util.*
 @RestController
 @CrossOrigin("*")
 class servicioController(@Autowired val serviciosService: ServicioService) {
-
+/*
     @GetMapping("/servicios")
     fun getServicios() = serviciosService.getServicio()
 
@@ -25,5 +25,5 @@ class servicioController(@Autowired val serviciosService: ServicioService) {
     fun create(@RequestBody servicioBody : servicioDTO): Servicio {
         return serviciosService.crearServicio(servicioBody.toServicio())
     }
-
+*/
 }

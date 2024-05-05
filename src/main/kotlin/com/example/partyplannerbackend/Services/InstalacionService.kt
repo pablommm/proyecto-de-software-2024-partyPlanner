@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class InstalacionService {
-
+    /*
     @Autowired
     lateinit var repoInstalacion: InstalacionRepository
 
@@ -19,9 +19,6 @@ class InstalacionService {
 
     fun getInstalacionById(id: Long) = repoInstalacion.getById(id)
 
-    fun borrarInstalacion(id: Long) {
-        repoInstalacion.delete(id)
-    }
 
     fun crearInstalacion(nuevaInstalacion: Instalacion): Instalacion {
         repoInstalacion.save(nuevaInstalacion)
@@ -32,5 +29,5 @@ class InstalacionService {
     //fun updateUser(usuario: Usuario) = repoInstalacion.update(usuario)
 
 
-
+    */
 }

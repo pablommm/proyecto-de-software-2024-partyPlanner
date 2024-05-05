@@ -9,13 +9,6 @@ import java.time.LocalDateTime
 
 @Service
 class userMagic : InitializingBean {
-    override fun afterPropertiesSet() {
-        crearUser()
-        crearInstalacion()
-        crearServicios()
-        crearEventos()
-    }
-
     @Autowired(required = true)
     lateinit var repoUser: usuarioRepository
 
@@ -28,7 +21,13 @@ class userMagic : InitializingBean {
     @Autowired(required = true)
     lateinit var repoEventos: EventoRepository
 
-    // Instancia 1: Estadio
+
+    override fun afterPropertiesSet() {
+        crearUser()
+    }
+
+    /*
+    / Instancia 1: Estadio
     val salonDiamante = Instalacion(
         nombreDeInstalacion = "Salon Diamante",
         descripcionDeInstalacion = "Esta es la descripcion de salon diamante lalalala lalal al al ala la la la",
@@ -58,13 +57,13 @@ class userMagic : InitializingBean {
     )
 
     // Instancia 3: Teatro
-   /* val teatro = Instalacion(
-        nombreDeInstalacion = "Teatro Nacional",
-        descripcionDeInstalacion = "Teatro histórico",
-        costoDeInstalacion = 800000,
-        CapacidadInstalacion = 500,
-        LocalidadDeInstalacion = "Ciudad de México"
-    )*/
+    /* val teatro = Instalacion(
+         nombreDeInstalacion = "Teatro Nacional",
+         descripcionDeInstalacion = "Teatro histórico",
+         costoDeInstalacion = 800000,
+         CapacidadInstalacion = 500,
+         LocalidadDeInstalacion = "Ciudad de México"
+     )*/
 
     fun crearInstalacion(){
         repoInstalacion.save(salonDiamante)
@@ -99,20 +98,21 @@ class userMagic : InitializingBean {
         repoEventos.save(bodaMYB)
         repoEventos.save(fiestaCumpleaños)
 
-    }
+    }*/
     val usuarioPrueba = Usuario(
         nombreYApellido = "Jhon Smith",
         username = "Jsmith",
         contrasenia = "1234",
 
-    )
+        )
 
     val usuario1 = Usuario(
         nombreYApellido = "Juan perez",
         username = "Jperez",
         contrasenia = "1234",
         rol = Rol.ADMINISTRADOR,
-        eventos = mutableListOf(bodaMYB))
+      //  eventos = mutableListOf(bodaMYB)
+        )
 
     fun crearUser(){
         repoUser.save(usuario1)

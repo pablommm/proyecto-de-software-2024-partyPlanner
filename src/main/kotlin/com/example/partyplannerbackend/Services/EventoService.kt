@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class EventoService {
-
+ /*
     @Autowired
     lateinit var repoEvento: EventoRepository
 
@@ -19,17 +19,15 @@ class EventoService {
 
     fun getEventoById(id: Long) = repoEvento.getById(id)
 
-    fun borrarEvento(id: Long) {
-        repoEvento.delete(id)
-    }
-
     fun crearEvento(nuevoEvento: Evento): Evento {
         repoEvento.save(nuevoEvento)
         return nuevoEvento
     }
     // aun no es claro si agregaremos la funcion para  editar al usuario,
 // pero almenos ya la tenemos agregada
-    //fun updateUser(usuario: Usuario) = repoUsuario.update(usuario)
+    //
+    fun updateUser(usuario: Usuario) = repoUsuario.update(usuario)
+  */
 
 
 }
