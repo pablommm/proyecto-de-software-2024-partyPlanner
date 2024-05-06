@@ -17,7 +17,6 @@ class UsuarioService {
     fun getUser() = repoUsuario.findAll()
        fun getUser(id: Long) = repoUsuario.findById(id)
 
-
     fun getEventos(id :Long) = repoUsuario.findById(id).get().eventos
 
     fun crearUsuario(nuevoUsuario: Usuario): Usuario {
@@ -27,6 +26,15 @@ class UsuarioService {
     // aun no es claro si agregaremos la funcion para  editar al usuario, pero almenos ya la tenemos agregada
     //fun updateUser(usuario: Usuario) = repoUsuario.update(usuario)
 
+    fun getUsuarioLogin(user: UsuarioLoginDTO): Usuario {
+        val usuario = repoUsuario.findAll().filter { it.accesoUsuario(user) }
+        if(usuario.isNotEmpty()) {
+            return usuario.first()
+        } else {
+
+            throw RuntimeException("Los datos ingresados son incorrectos")
+        }
+    }
 
 
 

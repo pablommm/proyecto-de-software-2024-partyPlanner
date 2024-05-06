@@ -29,12 +29,9 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     fun getMisEvento(@PathVariable id: Long): MutableList<Evento> {
         return userService.getEventos(id)
     }
-   /* @PostMapping("/usuarioLogin")
+    @PostMapping("/usuarioLogin")
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
     fun postUsuarioLoggin(@RequestBody user: UsuarioLoginDTO) = userService.getUsuarioLogin(user)
-
-
-    */
 
 
 }
