@@ -24,10 +24,13 @@ class userMagic : InitializingBean {
 
     override fun afterPropertiesSet() {
         crearUser()
+        crearInstalacion()
+        crearServicios()
+        //crearEventos()
     }
 
-    /*
-    / Instancia 1: Estadio
+
+    // Instancia 1: Estadio
     val salonDiamante = Instalacion(
         nombreDeInstalacion = "Salon Diamante",
         descripcionDeInstalacion = "Esta es la descripcion de salon diamante lalalala lalal al al ala la la la",
@@ -98,7 +101,7 @@ class userMagic : InitializingBean {
         repoEventos.save(bodaMYB)
         repoEventos.save(fiestaCumpleaños)
 
-    }*/
+    }
     val usuarioPrueba = Usuario(
         nombreYApellido = "Jhon Smith",
         username = "Jsmith",
