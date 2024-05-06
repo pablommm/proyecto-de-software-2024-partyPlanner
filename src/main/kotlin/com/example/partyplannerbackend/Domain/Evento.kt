@@ -11,8 +11,8 @@ class Evento(
     val id: Long? = null,
     @Column
     val nombreDelEvento: String= "",
-    @OneToOne
-    @JoinColumn(name = "instalacion_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "lugar_id")
     val lugar: Instalacion = Instalacion(),
     @Column
      val fechaEventoIni: LocalDateTime = LocalDateTime.now(),

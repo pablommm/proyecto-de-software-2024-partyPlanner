@@ -26,7 +26,7 @@ class userMagic : InitializingBean {
         crearUser()
         crearInstalacion()
         crearServicios()
-        //crearEventos()
+        crearEventos()
     }
 
 
@@ -74,34 +74,9 @@ class userMagic : InitializingBean {
         //repoInstalacion.create(teatro)
     }
 
-    // Servicios
-    val catering = Servicio(nombreDeServicio = "Servicio de catering", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.GASTRONOMIA, monto = 5000.0)
-    val seguridad = Servicio(nombreDeServicio = "Servicio de seguridad",descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.ACCESORIOS, monto = 5000.0)
-    val limpieza = Servicio(nombreDeServicio = "Servicio de limpieza", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.ACCESORIOS, monto = 5000.0)
 
 
-    fun crearServicios(){
-        repoServicios.save(catering)
-        repoServicios.save(seguridad)
-        repoServicios.save(limpieza)
-    }
 
-
-    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(catering))
-
-    val fiestaCumpleaños = Evento(
-        nombreDelEvento = "Fiesta de cumpleaños de Juan",
-        lugar = salonDiamante,
-        fechaEventoIni = LocalDateTime.now(),
-        fechaEventoFin = LocalDateTime.now(),
-        serviciosAdquiridos = mutableListOf(catering)
-    )
-
-    fun crearEventos(){
-        repoEventos.save(bodaMYB)
-        repoEventos.save(fiestaCumpleaños)
-
-    }
     val usuarioPrueba = Usuario(
         nombreYApellido = "Jhon Smith",
         username = "Jsmith",
@@ -121,5 +96,33 @@ class userMagic : InitializingBean {
         repoUser.save(usuario1)
         repoUser.save(usuarioPrueba)
     }
+    // Servicios
+    val catering = Servicio(nombreDeServicio = "Servicio de catering", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.GASTRONOMIA, monto = 5000.0)
+    val seguridad = Servicio(nombreDeServicio = "Servicio de seguridad",descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.ACCESORIOS, monto = 5000.0)
+    val limpieza = Servicio(nombreDeServicio = "Servicio de limpieza", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.ACCESORIOS, monto = 5000.0)
+
+
+    fun crearServicios(){
+        repoServicios.save(catering)
+        repoServicios.save(seguridad)
+        repoServicios.save(limpieza)
+    }
+
+
+    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(seguridad))
+
+    val fiestaCumpleaños = Evento(
+        nombreDelEvento = "Fiesta de cumpleaños de Juan",
+        lugar = salonDiamante,
+        fechaEventoIni = LocalDateTime.now(),
+        fechaEventoFin = LocalDateTime.now(),
+        serviciosAdquiridos = mutableListOf(catering)
+    )
+    fun crearEventos(){
+        repoEventos.save(bodaMYB)
+        repoEventos.save(fiestaCumpleaños)
+
+    }
+
 
 }
