@@ -29,7 +29,9 @@ class Usuario (
 
 
 
-    fun aniadirEvento(evento: Evento) = eventos.add(evento)
+    fun aniadirEvento(evento: Evento) {
+        this.eventos.add(evento)
+    }
 
     fun tengoSaldoParaSeniar(instalacion: Instalacion) = saldo >= instalacion.costoDeInstalacion
 
