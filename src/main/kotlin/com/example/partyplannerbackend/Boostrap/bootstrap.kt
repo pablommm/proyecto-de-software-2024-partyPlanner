@@ -59,19 +59,20 @@ class userMagic : InitializingBean {
         imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp"
     )
 
-    // Instancia 3: Teatro
-    /* val teatro = Instalacion(
-         nombreDeInstalacion = "Teatro Nacional",
-         descripcionDeInstalacion = "Teatro histórico",
-         costoDeInstalacion = 800000,
-         CapacidadInstalacion = 500,
-         LocalidadDeInstalacion = "Ciudad de México"
-     )*/
+
+     val InstalacionGenerica = Instalacion(
+         nombreDeInstalacion = "Instalacion Generica",
+         descripcionDeInstalacion = "Realizar evento sin necesidad de alguna instalacion",
+         costoDeInstalacion = 1,
+         CapacidadInstalacion = 1,
+         LocalidadDeInstalacion = " "
+     )
+
 
     fun crearInstalacion(){
         repoInstalacion.save(salonDiamante)
         repoInstalacion.save(salonMix)
-        //repoInstalacion.create(teatro)
+        repoInstalacion.save(InstalacionGenerica)
     }
 
 
