@@ -17,6 +17,8 @@ class EventoService {
     lateinit var repoUsuario : usuarioRepository
     fun getEvento() = repoEvento.findAll()
 
+    fun guardar(evento: Evento) =repoEvento.save(evento)
+
     fun getEventosActivos() = repoEvento.findAll().filter { it.activo }
 
     fun getEventoById(id: Long) = repoEvento.findById(id)
