@@ -36,10 +36,6 @@ class UsuarioService {
         }
     }
 
-
-
-
-
-
+    fun guardar(usuarioModificado:Usuario)= repoUsuario.save(usuarioModificado)
 
 }
