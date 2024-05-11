@@ -7,11 +7,11 @@ import java.time.LocalDateTime
 
 data class eventoDTO(
     val nombreDelEvento : String,
-    val Lugar : Int,
+    val Lugar : Long,
     val fechaEventoIni : LocalDateTime,
     val fechaEventoFin : LocalDateTime,
     val serviciosAdquiridos : MutableList<Servicio>,
-    val owner : Int// ver si se pasa id o objeto completo
+    val owner : Long// ver si se pasa id o objeto completo
     )
 
 

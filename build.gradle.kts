@@ -37,6 +37,11 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
     implementation("org.uqbar-project:geodds-xtend:1.0.3")
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation ("jakarta.persistence:jakarta.persistence-api:3.1.0")
+    runtimeOnly("org.postgresql:postgresql")
+    implementation("org.postgresql:postgresql:42.5.3")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

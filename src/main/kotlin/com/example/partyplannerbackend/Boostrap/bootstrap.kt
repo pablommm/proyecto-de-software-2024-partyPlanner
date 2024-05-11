@@ -1,10 +1,7 @@
 package com.example.partyplannerbackend.Boostrap
 
 import com.example.partyplannerbackend.Domain.*
-import com.example.partyplannerbackend.Repositorio.RepoEventos
-import com.example.partyplannerbackend.Repositorio.RepoInstalacion
-import com.example.partyplannerbackend.Repositorio.RepoServicios
-import com.example.partyplannerbackend.Repositorio.RepoUser
+import com.example.partyplannerbackend.Repositorio.*
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -12,20 +9,26 @@ import java.time.LocalDateTime
 
 @Service
 class userMagic : InitializingBean {
+    @Autowired(required = true)
+    lateinit var repoUser: usuarioRepository
+
+    @Autowired(required = true)
+    lateinit var repoInstalacion: InstalacionRepository
+
+    @Autowired(required = true)
+    lateinit var repoServicios: ServicioRepository
+
+    @Autowired(required = true)
+    lateinit var repoEventos: EventoRepository
+
+
     override fun afterPropertiesSet() {
-        crearUser()
         crearInstalacion()
         crearServicios()
         crearEventos()
+        crearUser()
     }
 
-    @Autowired(required = true)
-    lateinit var repoUser: RepoUser
-
-
-
-    @Autowired(required = true)
-    lateinit var repoInstalacion: RepoInstalacion
 
     // Instancia 1: Estadio
     val salonDiamante = Instalacion(
@@ -56,25 +59,38 @@ class userMagic : InitializingBean {
         imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp"
     )
 
-    // Instancia 3: Teatro
-   /* val teatro = Instalacion(
-        nombreDeInstalacion = "Teatro Nacional",
-        descripcionDeInstalacion = "Teatro histórico",
-        costoDeInstalacion = 800000,
-        CapacidadInstalacion = 500,
-        LocalidadDeInstalacion = "Ciudad de México"
-    )*/
+
+     val InstalacionGenerica = Instalacion(
+         nombreDeInstalacion = "Instalacion Generica",
+         descripcionDeInstalacion = "Realizar evento sin necesidad de alguna instalacion",
+         costoDeInstalacion = 1,
+         CapacidadInstalacion = 1,
+         LocalidadDeInstalacion = " "
+     )
+
 
     fun crearInstalacion(){
-        repoInstalacion.create(salonDiamante)
-        repoInstalacion.create(salonMix)
-        //repoInstalacion.create(teatro)
+        repoInstalacion.save(salonDiamante)
+        repoInstalacion.save(salonMix)
+        repoInstalacion.save(InstalacionGenerica)
     }
 
 
-    @Autowired(required = true)
-    lateinit var repoServicios: RepoServicios
 
+
+    val usuarioPrueba = Usuario(
+        nombreYApellido = "Jhon Smith",
+        username = "Jsmith",
+        contrasenia = "1234",
+
+        )
+
+
+
+    fun crearUser(){
+        repoUser.save(usuario1)
+        repoUser.save(usuarioPrueba)
+    }
     // Servicios
     val catering = Servicio(nombreDeServicio = "Servicio de catering", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.GASTRONOMIA, monto = 5000.0)
     val seguridad = Servicio(nombreDeServicio = "Servicio de seguridad",descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.ACCESORIOS, monto = 5000.0)
@@ -82,15 +98,13 @@ class userMagic : InitializingBean {
 
 
     fun crearServicios(){
-        repoServicios.create(catering)
-        repoServicios.create(seguridad)
-        repoServicios.create(limpieza)
+        repoServicios.save(catering)
+        repoServicios.save(seguridad)
+        repoServicios.save(limpieza)
     }
 
-    @Autowired(required = true)
-    lateinit var repoEventos: RepoEventos
 
-    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(catering))
+    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(seguridad))
 
     val fiestaCumpleaños = Evento(
         nombreDelEvento = "Fiesta de cumpleaños de Juan",
@@ -99,29 +113,18 @@ class userMagic : InitializingBean {
         fechaEventoFin = LocalDateTime.now(),
         serviciosAdquiridos = mutableListOf(catering)
     )
-
     fun crearEventos(){
-        repoEventos.create(bodaMYB)
-        repoEventos.create(fiestaCumpleaños)
+        repoEventos.save(bodaMYB)
+        repoEventos.save(fiestaCumpleaños)
 
     }
-    val usuarioPrueba = Usuario(
-        nombreYApellido = "Jhon Smith",
-        username = "Jsmith",
-        contrasenia = "1234",
-
-    )
-
     val usuario1 = Usuario(
         nombreYApellido = "Juan perez",
         username = "Jperez",
         contrasenia = "1234",
         rol = Rol.ADMINISTRADOR,
-        eventos = mutableListOf(bodaMYB))
+        eventos = mutableListOf(bodaMYB)
+    )
 
-    fun crearUser(){
-        repoUser.create(usuario1)
-        repoUser.create(usuarioPrueba)
-    }
 
 }

@@ -7,7 +7,8 @@ data class servicioDTO(
     val nombreDeServicio: String,
     val descripcion: String,
     val categoria: Categoria,
-    val monto : Double
+    val monto : Double,
+    val eventoID :Long
 )
 
 

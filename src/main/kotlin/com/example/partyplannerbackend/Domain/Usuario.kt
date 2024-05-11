@@ -1,18 +1,37 @@
 package com.example.partyplannerbackend.Domain
 
 import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
+import jakarta.persistence.*
+import jakarta.persistence.Id
 import java.time.LocalDateTime
 
+@Entity
+@Table(name = "usuarios")
 class Usuario (
-    val nombreYApellido :String,
-    val username: String,
-    val contrasenia : String,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+    @Column
+    val nombreYApellido :String= "",
+    @Column
+    val username: String = "",
+    @Column
+    val contrasenia : String= "",
+    @OneToMany(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "evento_id")
     val eventos : MutableList<Evento> = mutableListOf(),
+    @Column
     val rol : Rol = Rol.CONSUMIDOR,
+    @Column
     var saldo : Double = 0.0
-): Entidad(){
+){
 
-    fun aniadirEvento(evento: Evento) = eventos.add(evento)
+
+
+
+    fun aniadirEvento(evento: Evento) {
+        this.eventos.add(evento)
+    }
 
     fun tengoSaldoParaSeniar(instalacion: Instalacion) = saldo >= instalacion.costoDeInstalacion
 
@@ -53,7 +72,7 @@ class Usuario (
         if(esValidoContrasenia()) throw RuntimeException("El contraseña esta vacio")
     }
 
-    override fun validar() {
+     fun validar() {
         validarNombre()
         validarContrasenia()
         validarUsername()

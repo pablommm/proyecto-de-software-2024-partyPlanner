@@ -1,20 +1,38 @@
 package com.example.partyplannerbackend.Domain
 
+import jakarta.persistence.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.print.DocFlavor.URL
-
+@Entity
+@Table(name = "instalacion")
 class Instalacion(
-    val nombreDeInstalacion: String,
-    val descripcionDeInstalacion: String,
-    val costoDeInstalacion : Int,
-    val CapacidadInstalacion: Int,
-    val LocalidadDeInstalacion : String,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+    @Column
+    val nombreDeInstalacion: String = "",
+    @Column
+    val descripcionDeInstalacion: String= "",
+    @Column
+    val costoDeInstalacion : Int =1,
+    @Column
+    val CapacidadInstalacion: Int=1,
+    @Column
+    val LocalidadDeInstalacion : String = "",
+    @Column
     val montoDeReserva :Double = costoDeInstalacion * 0.15,
+    @Column
     var recaudacionDeReservas : Double = 0.0,
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "reserva_id")
     var fechasReservadas : MutableList<Reserva> = mutableListOf(),
-    val imagenPrincipal : String
-): Entidad() {
+    @Column
+    val imagenPrincipal : String = "",
+    @Column
+    var activo : Boolean = true
+) {
+
 
     fun aniadirReserva(reserva : Reserva) = fechasReservadas.add(reserva)
     fun removerReserva(reserva : Reserva) = fechasReservadas.remove(reserva)
@@ -100,7 +118,7 @@ class Instalacion(
 
 
 
-     override fun validar() {
+      fun validar() {
         validarLocalidad()
         validardescripcionDeInstalacion()
         validarNombre()
