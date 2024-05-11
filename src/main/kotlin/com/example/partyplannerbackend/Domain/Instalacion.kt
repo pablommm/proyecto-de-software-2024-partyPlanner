@@ -46,6 +46,10 @@ class Instalacion(
         aniadirReserva(nuevaReserva)
     }
 
+    fun desactivacion() {
+        activo = false
+    }
+
     fun esMayorAlaFechaActual(nuevaReserva : Reserva)= nuevaReserva.fechaIni >= LocalDateTime.now()
     fun esLaFechaFinEsMayorALaIni(nuevaReserva : Reserva)= nuevaReserva.fechaFin > nuevaReserva.fechaIni
     fun validarFechaMayorIni(nuevaReserva: Reserva) {

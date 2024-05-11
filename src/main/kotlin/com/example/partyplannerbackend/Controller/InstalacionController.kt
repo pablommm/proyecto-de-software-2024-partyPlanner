@@ -3,10 +3,7 @@ package com.example.partyplannerbackend.Controller
 import com.example.partyplannerbackend.Domain.Instalacion
 import com.example.partyplannerbackend.Services.InstalacionService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
@@ -22,5 +19,9 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     @GetMapping("/Instalaciones/")
     fun getInstalacionesActivas(@PathVariable id : Long): Optional<Instalacion> {
         return instalacionService.getInstalacionById(id)
+    }
+    @DeleteMapping("/deleteEspectaculo/{id}")
+    fun delete(@PathVariable id: Long): Instalacion {
+        return instalacionService.desactivarInstalacion(id)
     }
 }

@@ -49,25 +49,15 @@ class userMagic : InitializingBean {
         LocalidadDeInstalacion = "Madrid",
         imagenPrincipal = "https://i.ibb.co/HGdW34k/foto-salon-mix.webp"
     )
-    val lugarGeneric = Instalacion(
-        nombreDeInstalacion = "Generic",
-        descripcionDeInstalacion = "",
+    val InstalacionGenerica = Instalacion(
+        nombreDeInstalacion = "Instalacion Generica",
+        descripcionDeInstalacion = "Realizar evento sin necesidad de alguna instalacion",
         costoDeInstalacion = 1,
         CapacidadInstalacion = 1,
         LocalidadDeInstalacion = "",
         montoDeReserva = 0.0,
-        imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp"
+        imagenPrincipal = "https://i.ibb.co/DzBLCwz/download.jpg"
     )
-
-
-     val InstalacionGenerica = Instalacion(
-         nombreDeInstalacion = "Instalacion Generica",
-         descripcionDeInstalacion = "Realizar evento sin necesidad de alguna instalacion",
-         costoDeInstalacion = 1,
-         CapacidadInstalacion = 1,
-         LocalidadDeInstalacion = " "
-     )
-
 
     fun crearInstalacion(){
         repoInstalacion.save(salonDiamante)
