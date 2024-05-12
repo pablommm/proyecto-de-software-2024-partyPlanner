@@ -37,6 +37,13 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     fun getUserTotales(): Int {
         return userService.totalDeUsuarioRegistrados()
     }
+/*
+    @GetMapping("/TotalEventosPorUser")
+    fun getTotalEventosPorUser() : Map<String, Int>  {
+        return userService.getTotalEventosPorUser()
+    }
+
+ */
 }
 
 

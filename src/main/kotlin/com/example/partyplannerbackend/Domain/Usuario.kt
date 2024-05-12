@@ -18,7 +18,7 @@ class Usuario (
     @Column
     val contrasenia : String= "",
     @OneToMany(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "evento_id")
+    // @JoinColumn(name = "evento_id")
     val eventos : MutableList<Evento> = mutableListOf(),
     @Column
     val rol : Rol = Rol.CONSUMIDOR,

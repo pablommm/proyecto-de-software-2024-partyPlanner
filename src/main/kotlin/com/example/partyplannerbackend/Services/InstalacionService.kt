@@ -30,6 +30,7 @@ class InstalacionService {
         return nuevaInstalacion
     }
 
+    fun buscarPorNombreOubicacion(nombreUbicacion : String) = repoInstalacion.buscarPorNombreOubicacion(nombreUbicacion)
     // aun no es claro si agregaremos la funcion para  editar a la instalacion, pero almenos ya la tenemos agregada
     //fun updateUser(usuario: Usuario) = repoInstalacion.update(usuario)
 

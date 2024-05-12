@@ -48,4 +48,9 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
 
         return instalacionModificado
     }
+
+    @GetMapping("/buscar/{nombre}")
+    fun buscarPorNombre(@PathVariable("nombre") nombre: String): List<Instalacion> {
+        return instalacionService.buscarPorNombreOubicacion(nombre)
+    }
 }
