@@ -20,6 +20,8 @@ class ServicioService {
         return nuevoServicio
     }
 
+    fun guardar(servicio: Servicio) = repoService.save(servicio)
+
 
 
 

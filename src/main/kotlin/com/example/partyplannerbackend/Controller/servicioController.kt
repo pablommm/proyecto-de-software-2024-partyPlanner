@@ -33,4 +33,18 @@ class servicioController(@Autowired val serviciosService: ServicioService,
         return servicio
     }
 
+    @PutMapping("/EditarServicio/{id}")
+    fun editar(@PathVariable id: Long , @RequestBody servicioBody: servicioDTO) : Servicio{
+        val servicioExistente = serviciosService.getServiciorById(id).get()
+
+        servicioExistente.nombreDeServicio = servicioBody.nombreDeServicio
+        servicioExistente.monto = servicioBody.monto
+        servicioExistente.descripcion = servicioBody.descripcion
+        servicioExistente.categoria = servicioBody.categoria
+
+
+        val servicioModificado = serviciosService.guardar(servicioExistente)
+
+        return servicioModificado
+    }
 }
