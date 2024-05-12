@@ -11,17 +11,17 @@ class Instalacion(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val nombreDeInstalacion: String = "",
+    var nombreDeInstalacion: String = "",
     @Column
-    val descripcionDeInstalacion: String= "",
+    var descripcionDeInstalacion: String= "",
     @Column
-    val costoDeInstalacion : Int =1,
+    var costoDeInstalacion : Int =1,
     @Column
-    val CapacidadInstalacion: Int=1,
+    var CapacidadInstalacion: Int=1,
     @Column
-    val LocalidadDeInstalacion : String = "",
+    var LocalidadDeInstalacion : String = "",
     @Column
-    val montoDeReserva :Double = costoDeInstalacion * 0.15,
+    var montoDeReserva :Double = costoDeInstalacion * 0.15,
     @Column
     var recaudacionDeReservas : Double = 0.0,
     @OneToMany(fetch = FetchType.EAGER)

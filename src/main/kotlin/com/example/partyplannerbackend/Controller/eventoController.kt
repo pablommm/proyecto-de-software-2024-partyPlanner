@@ -1,9 +1,11 @@
 package com.example.partyplannerbackend.Controller
 
 import com.example.partyplannerbackend.DTO.eventoDTO
+import com.example.partyplannerbackend.DTO.servicioDTO
 import com.example.partyplannerbackend.DTO.toEvento
 import com.example.partyplannerbackend.Domain.Evento
 import com.example.partyplannerbackend.Domain.Reserva
+import com.example.partyplannerbackend.Domain.Servicio
 import com.example.partyplannerbackend.Services.EventoService
 import com.example.partyplannerbackend.Services.InstalacionService
 import com.example.partyplannerbackend.Services.UsuarioService
@@ -30,6 +32,20 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
         instalacionid.validarReserva(Reserva(null, eventobody.fechaEventoIni, eventobody.fechaEventoFin))
         return eventoService.crearEvento(eventobody.toEvento(instalacionid), usuarioID)
     }
+
+    @PutMapping("/EditarEvento/{id}")
+    fun editar(@PathVariable id: Long , @RequestBody servicioBody: servicioDTO)  {
+      /*  val servicioExistente = serviciosService.getServiciorById(id).get()
+
+
+
+        val servicioModificado = serviciosService.guardar(servicioExistente)
+
+
+        return servicioModificado
+
+
+       */ return }
 
 
 }

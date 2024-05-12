@@ -1,4 +1,24 @@
 package com.example.partyplannerbackend.DTO
 
-class InstalacionDTO {
-}
+import com.example.partyplannerbackend.Domain.Categoria
+import com.example.partyplannerbackend.Domain.Instalacion
+import com.example.partyplannerbackend.Domain.Usuario
+
+data class instalacionDTO(
+    val nombreDeInstalacion: String,
+    val descripcionDeInstalacion: String,
+    val costoDeInstalacion: Int,
+    val capacidadInstalacion : Int,
+    val localidadDeInstalacion : String,
+    val montoDeReserva :Double
+
+)
+
+fun instalacionDTO.toInstalacion() = Instalacion(
+    nombreDeInstalacion = nombreDeInstalacion,
+    descripcionDeInstalacion = descripcionDeInstalacion,
+    costoDeInstalacion = costoDeInstalacion,
+    CapacidadInstalacion = capacidadInstalacion,
+    LocalidadDeInstalacion = localidadDeInstalacion,
+    montoDeReserva = montoDeReserva
+)

@@ -1,6 +1,7 @@
 package com.example.partyplannerbackend.Services
 
 import com.example.partyplannerbackend.Domain.Instalacion
+import com.example.partyplannerbackend.Domain.Servicio
 import com.example.partyplannerbackend.Repositorio.InstalacionRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -22,6 +23,7 @@ class InstalacionService {
         instalacion.desactivacion()
         return repoInstalacion.save(instalacion)
     }
+    fun guardar(instalacion: Instalacion) = repoInstalacion.save(instalacion)
 
     fun crearInstalacion(nuevaInstalacion: Instalacion): Instalacion {
         repoInstalacion.save(nuevaInstalacion)
