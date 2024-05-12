@@ -21,7 +21,7 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     @GetMapping("/eventos")
     fun getEventos() = eventoService.getEvento()
 
-    @GetMapping("/eventosById/")
+    @GetMapping("/eventosById/{id}")
     fun getEventosById(@PathVariable id: Long): Optional<Evento> = eventoService.getEventoById(id)
 
     /* falta asignarle la reserva a la instalacion */
@@ -34,18 +34,19 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     }
 
     @PutMapping("/EditarEvento/{id}")
-    fun editar(@PathVariable id: Long , @RequestBody servicioBody: servicioDTO)  {
-      /*  val servicioExistente = serviciosService.getServiciorById(id).get()
+    fun editar(@PathVariable id: Long , @RequestBody eventobody: eventoDTO) :Evento {
+        val eventoExistente = eventoService.getEventoById(id).get()
+
+        eventoExistente.nombreDelEvento = eventobody.nombreDelEvento
 
 
-
-        val servicioModificado = serviciosService.guardar(servicioExistente)
-
-
-        return servicioModificado
+        val eventoModificado = eventoService.guardar(eventoExistente)
 
 
-       */ return }
+        return eventoModificado
+
+
+    }
 
 
 }

@@ -10,7 +10,7 @@ class Evento(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val nombreDelEvento: String= "",
+    var nombreDelEvento: String= "",
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lugar_id")
     val lugar: Instalacion = Instalacion(),
