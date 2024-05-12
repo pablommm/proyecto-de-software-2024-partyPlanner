@@ -36,6 +36,8 @@ class UsuarioService {
         }
     }
 
+     fun totalDeUsuarioRegistrados() = repoUsuario.findAll().count()
+
     fun guardar(usuarioModificado:Usuario)= repoUsuario.save(usuarioModificado)
 
 }

@@ -47,6 +47,15 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
 
 
     }
+    @GetMapping("/totalEvents")
+    fun getNumberEvents(): Int {
+        return eventoService.totalEventos()
+    }
+
+    @GetMapping("/activeEvents")
+    fun getActiveEventsWithNombreActivo(): Int {
+        return eventoService.totalEventosActivos()
+    }
 
 
 }

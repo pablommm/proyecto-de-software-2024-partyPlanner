@@ -33,6 +33,8 @@ class Usuario (
         this.eventos.add(evento)
     }
 
+    fun totalDeEventos() = eventos.count()
+
     fun tengoSaldoParaSeniar(instalacion: Instalacion) = saldo >= instalacion.costoDeInstalacion
 
     fun pagoDeReserva(instalacion: Instalacion) {

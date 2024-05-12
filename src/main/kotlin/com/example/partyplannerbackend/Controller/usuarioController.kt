@@ -33,7 +33,10 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
     fun postUsuarioLoggin(@RequestBody user: UsuarioLoginDTO) = userService.getUsuarioLogin(user)
 
-
+    @GetMapping("/TotalDeUSuariosRegistrados")
+    fun getUserTotales(): Int {
+        return userService.totalDeUsuarioRegistrados()
+    }
 }
 
 

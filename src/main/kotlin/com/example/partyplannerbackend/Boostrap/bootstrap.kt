@@ -80,6 +80,8 @@ class userMagic : InitializingBean {
     fun crearUser(){
         repoUser.save(usuario1)
         repoUser.save(usuarioPrueba)
+        repoUser.save(admin)
+        repoUser.save(test)
     }
     // Servicios
     val catering = Servicio(nombreDeServicio = "Servicio de catering", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.GASTRONOMIA, monto = 5000.0)
@@ -103,10 +105,17 @@ class userMagic : InitializingBean {
         fechaEventoFin = LocalDateTime.now(),
         serviciosAdquiridos = mutableListOf(catering)
     )
+    val fiestaCumpleaños2 = Evento(
+        nombreDelEvento = "Fiesta de cumpleaños de Juan",
+        lugar = salonDiamante,
+        fechaEventoIni = LocalDateTime.now(),
+        fechaEventoFin = LocalDateTime.now(),
+        serviciosAdquiridos = mutableListOf()
+    )
     fun crearEventos(){
         repoEventos.save(bodaMYB)
         repoEventos.save(fiestaCumpleaños)
-
+        repoEventos.save(fiestaCumpleaños2)
     }
     val usuario1 = Usuario(
         nombreYApellido = "Juan perez",
@@ -115,6 +124,19 @@ class userMagic : InitializingBean {
         rol = Rol.ADMINISTRADOR,
         eventos = mutableListOf(bodaMYB)
     )
+    val admin = Usuario(
+        nombreYApellido = "admin",
+        username = "admin",
+        contrasenia = "admin",
+        rol = Rol.ADMINISTRADOR,
 
+    )
+    val test = Usuario(
+        nombreYApellido = "admin",
+        username = "admin",
+        contrasenia = "admin",
+        rol = Rol.ADMINISTRADOR,
+
+        )
 
 }
