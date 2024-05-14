@@ -15,7 +15,8 @@ class UsuarioService {
     lateinit var repoUsuario : usuarioRepository
 
     fun getUser() = repoUsuario.findAll()
-       fun getUser(id: Long) = repoUsuario.findById(id)
+
+    fun getUser(id: Long) = repoUsuario.findById(id)
 
     fun getEventos(id :Long) = repoUsuario.findById(id).get().eventos
 

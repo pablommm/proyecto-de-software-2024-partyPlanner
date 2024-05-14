@@ -13,7 +13,7 @@ import java.util.*
 @CrossOrigin("*")
 class UsuarioController (@Autowired val userService : UsuarioService) {
 
-    @GetMapping("/Usuario")
+    @GetMapping("/Usuarios")
     fun getUsuario() = userService.getUser()
 
         @GetMapping("/UsuarioBqs/{id}")

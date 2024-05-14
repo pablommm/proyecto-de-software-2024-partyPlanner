@@ -18,12 +18,14 @@ class Evento(
      val fechaEventoIni: LocalDateTime = LocalDateTime.now(),
     @Column
      val fechaEventoFin: LocalDateTime =LocalDateTime.now(),
-    //  val cantidadDeInvitados :Int, de momento se deja
+    @Column
+    val presupuesto : Int = 0,
      @OneToMany(fetch = FetchType.EAGER)
      var serviciosAdquiridos : MutableList<Servicio> = mutableListOf(),
      @Column
      var activo : Boolean = true
 ){
+
 
 
 
