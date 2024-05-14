@@ -33,7 +33,7 @@ class Instalacion(
     var activo : Boolean = true
 ) {
 
-
+    fun costoDelaInstalacionDescontandoReserva() = this.costoDeInstalacion - montoDeReserva
     fun aniadirReserva(reserva : Reserva) = fechasReservadas.add(reserva)
     fun removerReserva(reserva : Reserva) = fechasReservadas.remove(reserva)
 

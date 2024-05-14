@@ -20,6 +20,8 @@ class Evento(
      val fechaEventoFin: LocalDateTime =LocalDateTime.now(),
     @Column
     val presupuesto : Int = 0,
+    @Column
+    val estadoPresupuesto : Int = 1,
      @OneToMany(fetch = FetchType.EAGER)
      var serviciosAdquiridos : MutableList<Servicio> = mutableListOf(),
      @Column
@@ -32,13 +34,24 @@ class Evento(
     // el evento debe sumar la lista de costo, generar un qr o target por evento
      fun costoTotalDeServicio() = serviciosAdquiridos.sumOf { it.monto }
 
-    fun costoDelEvento() = costoTotalDeServicio() + lugar.costoDeInstalacion
+    fun costoDelEvento() = costoTotalDeServicio() + lugar.costoDelaInstalacionDescontandoReserva()
 
     fun aniadirServicio(servicio :Servicio) = serviciosAdquiridos.add(servicio)
 
     fun esValidoNombre() = nombreDelEvento.isEmpty()
     fun validarNombre() {
         if(esValidoNombre()) throw RuntimeException("El nombre debe ser vacio")
+    }
+
+    fun actualizarEstadoDePresupuesto() {
+        val porcentajeGastado = (costoDelEvento() * 100) / presupuesto
+
+        var estadoCalculado: Int = when (porcentajeGastado.toInt()) {
+            in 0..80 -> 1
+            in 81..95 -> 2
+            else -> 3
+        }
+
     }
 
      fun validar() {
