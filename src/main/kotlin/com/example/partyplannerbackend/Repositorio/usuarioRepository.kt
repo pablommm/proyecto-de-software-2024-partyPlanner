@@ -20,14 +20,19 @@ interface usuarioRepository : CrudRepository<Usuario, Long> {
 
 
 
+
+
+
+
    @Query("SELECT  u.nombreYApellido ,COUNT(*) AS eventos_por_usuario\n" +
            "FROM Usuarios_Eventos ue\n" +
            "INNER JOIN Usuario u ON ue.usuario.id = u.id\n" +
            "GROUP BY u.id \n")
-   fun totalEventosPorUsuario() : Map<String, Int>
-
+   fun totalEventosPorUsuario() : List<Pair<String, Int>>
 
     */
+
+
 
 
 }

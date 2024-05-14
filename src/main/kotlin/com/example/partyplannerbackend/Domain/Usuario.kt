@@ -23,10 +23,15 @@ class Usuario (
     @Column
     val rol : Rol = Rol.CONSUMIDOR,
     @Column
-    var saldo : Double = 0.0
+    var saldo : Double = 0.0,
+    @Column
+    var activo : Boolean = true
 ){
 
-
+    fun desactivar()
+    {
+        this.activo=false
+    }
 
 
     fun aniadirEvento(evento: Evento) {

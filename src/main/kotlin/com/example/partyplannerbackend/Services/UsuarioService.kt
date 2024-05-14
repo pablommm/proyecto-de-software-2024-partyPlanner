@@ -37,11 +37,11 @@ class UsuarioService {
     }
 
      fun totalDeUsuarioRegistrados() = repoUsuario.findAll().count()
-/*
-    fun getTotalEventosPorUser() = repoUsuario.totalEventosPorUsuario()
+
+    // fun getTotalEventosPorUser() = repoUsuario.totalEventosPorUsuario()
 
 
- */
+
     fun guardar(usuarioModificado:Usuario)= repoUsuario.save(usuarioModificado)
 
 }
