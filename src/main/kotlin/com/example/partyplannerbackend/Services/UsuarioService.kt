@@ -1,6 +1,7 @@
 package com.example.partyplannerbackend.Services
 
 import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
+import com.example.partyplannerbackend.Domain.Instalacion
 import com.example.partyplannerbackend.Domain.Usuario
 import com.example.partyplannerbackend.Repositorio.usuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -41,7 +42,11 @@ class UsuarioService {
 
     // fun getTotalEventosPorUser() = repoUsuario.totalEventosPorUsuario()
 
-
+    fun desactivarUsuario(id : Long): Usuario {
+        val usuario = getUser(id).get()
+        usuario.desactivar()
+        return repoUsuario.save(usuario)
+    }
 
     fun guardar(usuarioModificado:Usuario)= repoUsuario.save(usuarioModificado)
 

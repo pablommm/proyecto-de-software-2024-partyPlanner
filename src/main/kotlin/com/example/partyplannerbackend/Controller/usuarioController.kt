@@ -2,6 +2,7 @@ package com.example.partyplannerbackend.Controller
 
 import com.example.partyplannerbackend.DTO.*
 import com.example.partyplannerbackend.Domain.Evento
+import com.example.partyplannerbackend.Domain.Instalacion
 import com.example.partyplannerbackend.Domain.Usuario
 import com.example.partyplannerbackend.Services.UsuarioService
 import io.swagger.v3.oas.annotations.Operation
@@ -36,6 +37,11 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     @GetMapping("/TotalDeUSuariosRegistrados")
     fun getUserTotales(): Int {
         return userService.totalDeUsuarioRegistrados()
+    }
+
+    @DeleteMapping("/deleUsuario/{id}")
+    fun delete(@PathVariable id: Long): Usuario {
+        return userService.desactivarUsuario(id)
     }
 /*
     @GetMapping("/TotalEventosPorUser")
