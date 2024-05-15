@@ -43,6 +43,9 @@ class Evento(
         if(esValidoNombre()) throw RuntimeException("El nombre debe ser vacio")
     }
 
+    fun esValidoEstadoPresupuesto() :Boolean = estadoPresupuesto in 1..3
+    fun validarnroDeCamiseta(){ if(!esValidoEstadoPresupuesto()) throw RuntimeException("El numero no es valido ") }
+
     fun actualizarEstadoDePresupuesto() {
         val porcentajeGastado = (costoDelEvento() * 100) / presupuesto
 
@@ -56,6 +59,7 @@ class Evento(
 
      fun validar() {
         validarNombre()
+         validarnroDeCamiseta()
     }
 
 
