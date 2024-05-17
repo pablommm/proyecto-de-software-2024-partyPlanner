@@ -47,4 +47,6 @@ class servicioController(@Autowired val serviciosService: ServicioService,
 
         return servicioModificado
     }
+    @DeleteMapping("/DeletarServicio/{id}")
+    fun deleteServicie(@PathVariable id: Long) = serviciosService.delete(id)
 }

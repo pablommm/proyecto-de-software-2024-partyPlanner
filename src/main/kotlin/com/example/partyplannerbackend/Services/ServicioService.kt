@@ -20,6 +20,8 @@ class ServicioService {
         return nuevoServicio
     }
 
+    fun delete(id : Long) = repoService.deleteById(id)
+
     fun guardar(servicio: Servicio) = repoService.save(servicio)
 
 
