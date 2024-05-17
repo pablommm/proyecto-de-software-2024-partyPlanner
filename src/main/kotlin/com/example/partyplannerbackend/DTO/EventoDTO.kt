@@ -11,7 +11,8 @@ data class eventoDTO(
     val fechaEventoIni : LocalDateTime,
     val fechaEventoFin : LocalDateTime,
     val serviciosAdquiridos : MutableList<Servicio>,
-    val owner : Long// ver si se pasa id o objeto completo
+    val owner : Long,
+    val presupuesto :Int
     )
 
 
@@ -20,6 +21,7 @@ nombreDelEvento = nombreDelEvento,
     lugar = instalacion,
     fechaEventoIni = fechaEventoIni,
     fechaEventoFin =fechaEventoFin,
-    serviciosAdquiridos = serviciosAdquiridos
+    serviciosAdquiridos = serviciosAdquiridos,
+    presupuesto = presupuesto
 
 )
