@@ -60,9 +60,10 @@ class userMagic : InitializingBean {
     )
 
     fun crearInstalacion(){
+        repoInstalacion.save(InstalacionGenerica)
         repoInstalacion.save(salonDiamante)
         repoInstalacion.save(salonMix)
-        repoInstalacion.save(InstalacionGenerica)
+
     }
 
 
