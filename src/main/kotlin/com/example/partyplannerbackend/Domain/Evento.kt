@@ -42,16 +42,16 @@ class Evento(
     fun esValidoEstadoPresupuesto() :Boolean = estadoPresupuesto in 1..3
     fun validarnroDeCamiseta(){ if(!esValidoEstadoPresupuesto()) throw RuntimeException("El numero no es valido ") }
 
-    fun actualizarEstadoDePresupuesto() {
-        val porcentajeGastado = (costoDelEvento() * 100) / presupuesto
 
-        var estadoCalculado: Int = when (porcentajeGastado.toInt()) {
-            in 0..80 -> 1
-            in 81..95 -> 2
+    fun porcentajeGastado()= (costoDelEvento() * 100) / presupuesto
+
+
+    fun actualizarEstadoDePresupuesto() {
+        estadoPresupuesto= when (porcentajeGastado()) {
+            in 0.0..80.0 -> 1
+            in 81.0..95.0 -> 2
             else -> 3
         }
-        estadoPresupuesto=estadoCalculado
-
     }
 
      fun validar() {

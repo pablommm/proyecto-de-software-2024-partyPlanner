@@ -27,8 +27,13 @@ class eventoTest:DescribeSpec  ({
         nombreDeServicio = "Servicio de catering",
         descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",
         categoria = Categoria.GASTRONOMIA,
-        monto = 1250.0)
+        monto = 160.0)
 
+    val catering2 = Servicio(
+        nombreDeServicio = "Servicio de catering",
+        descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",
+        categoria = Categoria.GASTRONOMIA,
+        monto = 120.0)
     val fiestaCumpleaños = Evento(
         nombreDelEvento = "Fiesta de cumpleaños de Juan",
         lugar = salonDiamante,
@@ -41,8 +46,15 @@ class eventoTest:DescribeSpec  ({
     it("verificamos si al iniciar el evento comienza con estado 1"){
         fiestaCumpleaños.estadoPresupuesto.shouldBe(1)
         fiestaCumpleaños.aniadirServicio(catering)
+        fiestaCumpleaños.porcentajeGastado().shouldBe(84.0)
+        //fiestaCumpleaños.actualizarEstadoDePresupuesto()
+        //fiestaCumpleaños.estadoPresupuesto.shouldBe(2)
+        fiestaCumpleaños.aniadirServicio(catering2)
         fiestaCumpleaños.actualizarEstadoDePresupuesto()
-        fiestaCumpleaños.estadoPresupuesto.shouldBe(2)
+        fiestaCumpleaños.porcentajeGastado().shouldBe(96.0)
+        fiestaCumpleaños.actualizarEstadoDePresupuesto()
+        fiestaCumpleaños.estadoPresupuesto.shouldBe(3)
+
     }
 
 
