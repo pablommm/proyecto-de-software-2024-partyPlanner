@@ -21,18 +21,14 @@ class Evento(
     @Column
     val presupuesto : Int = 0,
     @Column
-    val estadoPresupuesto : Int = 1,
+    var estadoPresupuesto : Int = 1,
      @OneToMany(fetch = FetchType.EAGER)
      var serviciosAdquiridos : MutableList<Servicio> = mutableListOf(),
      @Column
      var activo : Boolean = true
 ){
-
-
-
-
     // el evento debe sumar la lista de costo, generar un qr o target por evento
-     fun costoTotalDeServicio() = serviciosAdquiridos.sumOf { it.monto }
+    fun costoTotalDeServicio() = serviciosAdquiridos.sumOf { it.monto }
 
     fun costoDelEvento() = costoTotalDeServicio() + lugar.costoDelaInstalacionDescontandoReserva()
 
@@ -54,6 +50,7 @@ class Evento(
             in 81..95 -> 2
             else -> 3
         }
+        estadoPresupuesto=estadoCalculado
 
     }
 

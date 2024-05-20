@@ -57,5 +57,10 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
         return eventoService.totalEventosActivos()
     }
 
+    @GetMapping("/estadoPresupuesto")
+    fun getestadoPresupuesto(): Int {
+        return eventoService.totalEventosActivos()
+    }
+
 
 }

@@ -37,6 +37,9 @@ class EventoService {
        return repoEvento.countActiveEvents()
 
     }
+
+
+
     // aun no es claro si agregaremos la funcion para  editar al usuario,
 // pero almenos ya la tenemos agregada
     //

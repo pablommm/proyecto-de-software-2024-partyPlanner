@@ -11,8 +11,8 @@ import java.time.LocalDate
 
 class usuarioTest:DescribeSpec  ({
     isolationMode = IsolationMode.InstancePerTest
-    val evento1 =
-    val usuario1 = Usuario(nombreYApellido = "san martin", username = "san_martin",id= 5, contrasenia = "1234",eventos= MutableList())
+    //val evento1 =
+    //val usuario1 = Usuario(nombreYApellido = "san martin", username = "san_martin",id= 5, contrasenia = "1234",eventos= MutableList())
 }
 
 )
