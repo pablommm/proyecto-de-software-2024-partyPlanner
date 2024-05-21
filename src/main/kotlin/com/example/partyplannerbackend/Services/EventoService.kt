@@ -38,6 +38,12 @@ class EventoService {
 
     }
 
+    fun listadoDeServicios(id:Long): MutableList<Servicio> {
+        val evento = getEventoById(id).get()
+        return evento.serviciosAdquiridos
+
+    }
+
 
 
     // aun no es claro si agregaremos la funcion para  editar al usuario,
