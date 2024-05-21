@@ -30,6 +30,7 @@ class servicioController(@Autowired val serviciosService: ServicioService,
         val servicio = serviciosService.crearServicio(servicioBody.toServicio())
         evento.aniadirServicio(servicio)
         eventoServicio.guardar(evento)
+        evento.actualizarEstadoDePresupuesto()
         return servicio
     }
 
