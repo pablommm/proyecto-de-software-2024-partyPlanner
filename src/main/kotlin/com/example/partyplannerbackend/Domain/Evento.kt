@@ -19,7 +19,7 @@ class Evento(
     @Column
      val fechaEventoFin: LocalDateTime =LocalDateTime.now(),
     @Column
-    val presupuesto : Int = 0,
+    val presupuesto : Int = 1,
     @Column
     var estadoPresupuesto : Int = 1,
      @OneToMany(fetch = FetchType.EAGER)
