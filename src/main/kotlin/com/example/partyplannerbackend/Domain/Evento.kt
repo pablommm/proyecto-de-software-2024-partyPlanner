@@ -23,6 +23,7 @@ class Evento(
     @Column
     var estadoPresupuesto : Int = 1,
      @OneToMany(fetch = FetchType.EAGER)
+     @JoinColumn(name = "id_evento")
      var serviciosAdquiridos : MutableList<Servicio> = mutableListOf(),
      @Column
      var activo : Boolean = true
