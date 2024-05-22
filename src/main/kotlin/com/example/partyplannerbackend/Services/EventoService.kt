@@ -44,6 +44,7 @@ class EventoService {
 
     }
 
+    fun delete(id : Long) = repoEvento.deleteById(id)
 
 
     // aun no es claro si agregaremos la funcion para  editar al usuario,

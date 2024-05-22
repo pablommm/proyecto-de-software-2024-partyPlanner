@@ -67,5 +67,8 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
         return eventoService.listadoDeServicios(id)
     }
 
+    @DeleteMapping("/DeletarEvento/{id}")
+    fun deleteServicie(@PathVariable id: Long) = eventoService.delete(id)
+
 
 }
