@@ -27,6 +27,18 @@ class Evento(
      @Column
      var activo : Boolean = true
 ){
+
+    fun desactivar()
+    {
+        this.activo=false
+    }
+
+    fun eventoPasado(){
+        if(fechaEventoFin.isAfter(LocalDateTime.now())){
+            desactivar()
+        }
+    }
+
     // el evento debe sumar la lista de costo, generar un qr o target por evento
     fun costoTotalDeServicio() = serviciosAdquiridos.sumOf { it.monto }
 
