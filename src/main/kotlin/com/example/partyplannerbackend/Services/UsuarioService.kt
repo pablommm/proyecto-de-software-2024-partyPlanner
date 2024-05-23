@@ -48,6 +48,12 @@ class UsuarioService {
         return repoUsuario.save(usuario)
     }
 
+    fun activarUsuario(id : Long) : Usuario{
+        val usuario = getUser(id).get()
+        usuario.activar()
+        return repoUsuario.save(usuario)
+    }
+
     fun guardar(usuarioModificado:Usuario)= repoUsuario.save(usuarioModificado)
 
 }

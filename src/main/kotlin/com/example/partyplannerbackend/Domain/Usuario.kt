@@ -28,6 +28,9 @@ class Usuario (
     var activo : Boolean = true
 ){
 
+    fun activar(){
+        this.activo = true
+    }
     fun desactivar()
     {
         this.activo=false

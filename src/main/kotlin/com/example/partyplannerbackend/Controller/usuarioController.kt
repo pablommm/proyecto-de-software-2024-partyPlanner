@@ -43,13 +43,10 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     fun delete(@PathVariable id: Long): Usuario {
         return userService.desactivarUsuario(id)
     }
-/*
-    @GetMapping("/TotalEventosPorUser")
-    fun getTotalEventosPorUser() : Map<String, Int>  {
-        return userService.getTotalEventosPorUser()
+    @PutMapping("/activarUser/{id}")
+    fun active(@PathVariable  id : Long) :Usuario{
+        return userService.activarUsuario(id)
     }
-
- */
 
 
 }
