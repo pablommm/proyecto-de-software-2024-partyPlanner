@@ -29,6 +29,9 @@ class Instalacion(
     var fechasReservadas : MutableList<Reserva> = mutableListOf(),
     @Column
     val imagenPrincipal : String = "",
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idInstalacion")
+    val imagenes: MutableList<Imagen> = mutableListOf(),
     @Column
     var activo : Boolean = true
 ) {

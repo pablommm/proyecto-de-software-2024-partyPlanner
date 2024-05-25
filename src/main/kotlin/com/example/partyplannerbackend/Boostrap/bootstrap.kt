@@ -50,8 +50,8 @@ class userMagic : InitializingBean {
         imagenPrincipal = "https://i.ibb.co/HGdW34k/foto-salon-mix.webp"
     )
     val InstalacionGenerica = Instalacion(
-        nombreDeInstalacion = "Instalacion Generica",
-        descripcionDeInstalacion = "Realizar evento sin necesidad de alguna instalacion",
+        nombreDeInstalacion = "Tu evento, tu lugar",
+        descripcionDeInstalacion = "¡Celebra tu evento en cualquier lugar! ",
         costoDeInstalacion = 1,
         CapacidadInstalacion = 1,
         LocalidadDeInstalacion = "",
