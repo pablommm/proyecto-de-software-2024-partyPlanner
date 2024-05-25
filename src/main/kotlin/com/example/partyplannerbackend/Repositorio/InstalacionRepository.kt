@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 
 interface InstalacionRepository : CrudRepository<Instalacion, Long> {
 
-    @Query("SELECT i FROM Instalacion i WHERE i.nombreDeInstalacion LIKE %?1% OR i.LocalidadDeInstalacion LIKE %?1% OR i.LocalidadDeInstalacion LIKE %?1% ")
+    @Query("SELECT i FROM Instalacion i WHERE LOWER(i.nombreDeInstalacion) LIKE :nombreUbicacion")
     fun buscarPorNombreOubicacion(nombreUbicacion: String): List<Instalacion>
 
 }

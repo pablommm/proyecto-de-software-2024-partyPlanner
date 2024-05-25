@@ -50,7 +50,9 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     }
 
     @GetMapping("/buscar/{nombre}")
-    fun buscarPorNombre(@PathVariable("nombre") nombre: String): List<Instalacion> {
-        return instalacionService.buscarPorNombreOubicacion(nombre)
+    fun buscarPorNombre(@PathVariable nombre: String): List<Instalacion> {
+        val nombreLower= nombre.lowercase()
+        val porcentaje = "%$nombreLower%"
+        return instalacionService.buscarPorNombreOubicacion(porcentaje)
     }
 }
