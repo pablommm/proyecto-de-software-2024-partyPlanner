@@ -15,8 +15,16 @@ class Servicio(
     @Column
     var categoria: Categoria = Categoria.GASTRONOMIA,
     @Column
-    var monto : Double = 0.0
+    var monto : Double = 0.0,
+    @Column
+    var activo :Boolean = true
 ){
+
+    fun desactivar()
+    {
+        this.activo=false
+    }
+
     fun esValidoNombre() = nombreDeServicio.isEmpty()
     fun validarnombreDeServicio(){
         if(esValidoNombre()) throw RuntimeException("El nombre esta vacio")

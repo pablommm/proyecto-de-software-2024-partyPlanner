@@ -52,6 +52,9 @@ class Instalacion(
     fun desactivacion() {
         activo = false
     }
+    fun activar() {
+        activo = true
+    }
 
     fun esMayorAlaFechaActual(nuevaReserva : Reserva)= nuevaReserva.fechaIni >= LocalDateTime.now()
     fun esLaFechaFinEsMayorALaIni(nuevaReserva : Reserva)= nuevaReserva.fechaFin > nuevaReserva.fechaIni

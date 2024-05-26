@@ -23,6 +23,13 @@ class InstalacionService {
         instalacion.desactivacion()
         return repoInstalacion.save(instalacion)
     }
+
+    fun activarInstalacion(id : Long): Instalacion {
+        val instalacion = getInstalacionById(id).get()
+        instalacion.activar()
+        return repoInstalacion.save(instalacion)
+    }
+
     fun guardar(instalacion: Instalacion) = repoInstalacion.save(instalacion)
 
     fun crearInstalacion(nuevaInstalacion: Instalacion): Instalacion {
