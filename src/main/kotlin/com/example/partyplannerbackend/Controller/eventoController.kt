@@ -63,7 +63,7 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     }
 
     @GetMapping("/serviciosAdquiridos/{id}")
-    fun serviciosAdquiridos(@PathVariable id: Long): MutableList<Servicio> {
+    fun serviciosAdquiridos(@PathVariable id: Long): List<Servicio> {
         return eventoService.listadoDeServicios(id)
     }
 

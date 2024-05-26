@@ -51,4 +51,8 @@ class servicioController(@Autowired val serviciosService: ServicioService,
     }
     @DeleteMapping("/DeletarServicio/{id}")
     fun deleteServicie(@PathVariable id: Long) = serviciosService.delete(id)
+
+    @GetMapping("/serviciosActivos")
+    fun getServiciosActivos() = serviciosService.getServicioActivos()
+
 }

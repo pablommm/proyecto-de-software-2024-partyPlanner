@@ -38,14 +38,19 @@ class EventoService {
 
     }
 
-    fun listadoDeServicios(id:Long): MutableList<Servicio> {
+    fun listadoDeServicios(id:Long): List<Servicio> {
         val evento = getEventoById(id).get()
-        return evento.serviciosAdquiridos
+        return evento.serviciosAdquiridos.filter { it.activo }
 
     }
 
-    fun delete(id : Long) = repoEvento.deleteById(id)
+    //fun delete(id : Long) = repoEvento.deleteById(id)
 
+    fun delete(id : Long): Evento {
+        val evento = getEventoById(id).get()
+        evento.desactivar()
+        return repoEvento.save(evento)
+    }
 
     // aun no es claro si agregaremos la funcion para  editar al usuario,
 // pero almenos ya la tenemos agregada
