@@ -10,7 +10,8 @@ data class instalacionDTO(
     val costoDeInstalacion: Int,
     val capacidadInstalacion : Int,
     val localidadDeInstalacion : String,
-    val montoDeReserva :Double
+    val montoDeReserva :Double,
+    val imagenPrincipal : String,
 
 )
 
@@ -20,5 +21,6 @@ fun instalacionDTO.toInstalacion() = Instalacion(
     costoDeInstalacion = costoDeInstalacion,
     CapacidadInstalacion = capacidadInstalacion,
     LocalidadDeInstalacion = localidadDeInstalacion,
-    montoDeReserva = montoDeReserva
+    montoDeReserva = montoDeReserva,
+    imagenPrincipal = imagenPrincipal
 )
