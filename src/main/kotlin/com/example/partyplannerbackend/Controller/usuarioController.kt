@@ -48,6 +48,20 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
         return userService.activarUsuario(id)
     }
 
+    @PutMapping("/UsuarioUpdate/{id}")
+    fun editar(@PathVariable id: Long , @RequestBody usuarioBody: UsuarioModificado) : Usuario {
+        val usuarioExistente = userService.getUser(id).get()
+
+        usuarioExistente.nombreYApellido = usuarioBody.nombreYApellido
+        usuarioExistente.username =usuarioBody.username
+        usuarioExistente.contrasenia = usuarioBody.contrasenia
+        usuarioExistente.saldo =usuarioBody.saldo
+
+        val instalacionModificado = userService.guardar(usuarioExistente)
+
+        return instalacionModificado
+    }
+
 
 }
 

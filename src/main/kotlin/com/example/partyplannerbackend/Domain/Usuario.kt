@@ -12,11 +12,11 @@ class Usuario (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column
-    val nombreYApellido :String= "",
+    var nombreYApellido :String= "",
     @Column
-    val username: String = "",
+    var username: String = "",
     @Column
-    val contrasenia : String= "",
+    var contrasenia : String= "",
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuarioID")
     val eventos : MutableList<Evento> = mutableListOf(),
