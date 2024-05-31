@@ -28,6 +28,7 @@ class EventoService {
         val usuario = repoUsuario.findById(id).get()
         usuario.aniadirEvento(evento)
         repoUsuario.save(usuario)
+
         return evento
     }
 

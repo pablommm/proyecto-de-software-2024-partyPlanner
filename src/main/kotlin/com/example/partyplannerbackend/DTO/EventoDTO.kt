@@ -2,6 +2,7 @@ package com.example.partyplannerbackend.DTO
 
 import com.example.partyplannerbackend.Domain.Evento
 import com.example.partyplannerbackend.Domain.Instalacion
+import com.example.partyplannerbackend.Domain.Reserva
 import com.example.partyplannerbackend.Domain.Servicio
 import java.time.LocalDateTime
 
@@ -25,3 +26,4 @@ nombreDelEvento = nombreDelEvento,
     presupuesto = presupuesto
 
 )
+

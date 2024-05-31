@@ -25,7 +25,7 @@ class Instalacion(
     @Column
     var recaudacionDeReservas : Double = 0.0,
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "reserva_id")
+    @JoinColumn(name = "instalacion_id")
     var fechasReservadas : MutableList<Reserva> = mutableListOf(),
     @Column
     val imagenPrincipal : String = "",

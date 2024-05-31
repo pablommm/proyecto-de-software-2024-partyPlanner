@@ -1,6 +1,7 @@
 package com.example.partyplannerbackend.Services
 
 import com.example.partyplannerbackend.Domain.Instalacion
+import com.example.partyplannerbackend.Domain.Reserva
 import com.example.partyplannerbackend.Domain.Servicio
 import com.example.partyplannerbackend.Repositorio.InstalacionRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,6 +19,10 @@ class InstalacionService {
 
     fun getInstalacionById(id: Long) = repoInstalacion.findById(id)
 
+    fun getListaFechasInstalacionById(id: Long): MutableList<Reserva> {
+        val instalacion = repoInstalacion.findById(id).get()
+        return instalacion.fechasReservadas
+    }
     fun desactivarInstalacion(id : Long): Instalacion {
         val instalacion = getInstalacionById(id).get()
         instalacion.desactivacion()

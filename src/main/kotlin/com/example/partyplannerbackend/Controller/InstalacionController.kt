@@ -21,6 +21,11 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     fun getInstalacionesActivas(@PathVariable id : Long): Optional<Instalacion> {
         return instalacionService.getInstalacionById(id)
     }
+
+    @GetMapping("/fechasBloqueadas/{id}")
+    fun getFechasBloqueadas(@PathVariable id : Long): MutableList<Reserva> {
+        return instalacionService.getListaFechasInstalacionById(id)
+    }
     @DeleteMapping("/deleteInstalacion/{id}")
     fun delete(@PathVariable id: Long): Instalacion {
         return instalacionService.desactivarInstalacion(id)

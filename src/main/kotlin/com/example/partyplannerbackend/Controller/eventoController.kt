@@ -6,8 +6,10 @@ import com.example.partyplannerbackend.DTO.toEvento
 import com.example.partyplannerbackend.Domain.Evento
 import com.example.partyplannerbackend.Domain.Reserva
 import com.example.partyplannerbackend.Domain.Servicio
+import com.example.partyplannerbackend.Repositorio.RservaRepository
 import com.example.partyplannerbackend.Services.EventoService
 import com.example.partyplannerbackend.Services.InstalacionService
+import com.example.partyplannerbackend.Services.ReservaService
 import com.example.partyplannerbackend.Services.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -16,7 +18,8 @@ import java.util.*
 @RestController
 @CrossOrigin("*")
 class eventoController(@Autowired val eventoService: EventoService,@Autowired val instalacionService: InstalacionService,
-@Autowired val usuarioService: UsuarioService ) {
+@Autowired val usuarioService: UsuarioService, @Autowired val reservaService: ReservaService
+) {
 
     @GetMapping("/eventos")
     fun getEventos() = eventoService.getEvento()
@@ -30,6 +33,10 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
         val instalacionid = instalacionService.getInstalacionById(eventobody.Lugar).get()
         val usuarioID = eventobody.owner
         instalacionid.validarReserva(Reserva(null, eventobody.fechaEventoIni, eventobody.fechaEventoFin))
+
+        val reserva = reservaService.create(eventobody.fechaEventoIni, eventobody.fechaEventoFin)
+        instalacionid.aniadirReserva(reserva)
+        instalacionService.guardar(instalacionid)
         return eventoService.crearEvento(eventobody.toEvento(instalacionid), usuarioID)
     }
 
@@ -64,7 +71,7 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
 
     @GetMapping("/serviciosAdquiridos/{id}")
     fun serviciosAdquiridos(@PathVariable id: Long): List<Servicio> {
-        return eventoService.listadoDeServicios(id)
+        return eventoService.listadoDeServicios(id).filter { it.activo }
     }
 
     @DeleteMapping("/DeletarEvento/{id}")
