@@ -40,6 +40,7 @@ class EventoService {
 
     fun listadoDeServicios(id:Long): List<Servicio> {
         val evento = getEventoById(id).get()
+        evento.actualizarEstadoDePresupuesto()
         return evento.serviciosAdquiridos.filter { it.activo }
 
     }

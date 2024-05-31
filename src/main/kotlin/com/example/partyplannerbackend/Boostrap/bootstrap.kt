@@ -73,6 +73,7 @@ class userMagic : InitializingBean {
         nombreYApellido = "Jhon Smith",
         username = "Jsmith",
         contrasenia = "1234",
+        saldo = 500000.0
 
         )
 
@@ -97,7 +98,7 @@ class userMagic : InitializingBean {
     }
 
 
-    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(seguridad))
+    val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(seguridad), presupuesto = 2000000)
 
     val fiestaCumpleaños = Evento(
         nombreDelEvento = "Fiesta de cumpleaños de Juan",
