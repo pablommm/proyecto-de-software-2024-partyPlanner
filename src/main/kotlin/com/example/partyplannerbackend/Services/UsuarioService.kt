@@ -6,6 +6,7 @@ import com.example.partyplannerbackend.Domain.Usuario
 import com.example.partyplannerbackend.Repositorio.usuarioRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import org.springframework.web.bind.annotation.PathVariable
 import java.lang.RuntimeException
 import java.util.function.LongUnaryOperator
 
@@ -53,7 +54,11 @@ class UsuarioService {
         usuario.activar()
         return repoUsuario.save(usuario)
     }
-
+     fun cargarSaldo(id : Long, saldo : Double) : Usuario{
+        val usuario = getUser(id).get()
+        usuario.acreditarCarga(saldo)
+        return repoUsuario.save(usuario)
+    }
     fun guardar(usuarioModificado:Usuario)= repoUsuario.save(usuarioModificado)
 
 }

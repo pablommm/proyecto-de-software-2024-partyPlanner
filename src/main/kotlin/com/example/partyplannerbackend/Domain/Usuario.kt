@@ -36,6 +36,10 @@ class Usuario (
         this.activo=false
     }
 
+    fun acreditarCarga(saldo: Double){
+        this.saldo+= saldo
+    }
+
 
     fun aniadirEvento(evento: Evento) {
         this.eventos.add(evento)

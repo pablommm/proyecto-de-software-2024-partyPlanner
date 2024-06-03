@@ -61,7 +61,11 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
 
         return instalacionModificado
     }
-
+    @PutMapping("/cargarSaldo/{id}/{saldo}")
+    fun cargarSaldo(@PathVariable  id : Long,@PathVariable  saldo : Double) :Usuario{
+        //val saldoDuble =saldo.toDouble()
+        return userService.cargarSaldo(id,saldo)
+    }
 
 }
 
