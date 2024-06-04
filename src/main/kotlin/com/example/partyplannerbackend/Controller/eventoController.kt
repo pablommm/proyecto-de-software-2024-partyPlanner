@@ -32,11 +32,28 @@ class eventoController(@Autowired val eventoService: EventoService,@Autowired va
     fun create(@RequestBody eventobody: eventoDTO): Evento {
         val instalacionid = instalacionService.getInstalacionById(eventobody.Lugar).get()
         val usuarioID = eventobody.owner
-        instalacionid.validarReserva(Reserva(null, eventobody.fechaEventoIni, eventobody.fechaEventoFin))
-
+        val usuario = usuarioService.getUser(usuarioID).get()
         val reserva = reservaService.create(eventobody.fechaEventoIni, eventobody.fechaEventoFin)
-        instalacionid.aniadirReserva(reserva)
-        instalacionService.guardar(instalacionid)
+
+        if((instalacionid.id != 1.toLong())){
+            instalacionid.validarReserva(Reserva(null, eventobody.fechaEventoIni, eventobody.fechaEventoFin))
+            if((usuario.rol.toString() != "ADMINISTRADOR")) {
+                usuario.reservarLugar(
+                    instalacionid,
+                    reserva,
+                    eventobody.dias
+                )// pasarle la cantidad de dias para multiplicar
+
+                usuarioService.guardarr(usuario)
+
+            }
+           // val reserva = reservaService.create(eventobody.fechaEventoIni, eventobody.fechaEventoFin)
+            instalacionid.aniadirReserva(reserva)
+            instalacionService.guardar(instalacionid)
+            usuarioService.guardarr(usuario)
+        }
+
+
         return eventoService.crearEvento(eventobody.toEvento(instalacionid), usuarioID)
     }
 

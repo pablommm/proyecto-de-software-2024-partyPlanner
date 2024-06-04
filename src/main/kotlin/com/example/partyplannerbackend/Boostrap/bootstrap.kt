@@ -34,7 +34,7 @@ class userMagic : InitializingBean {
     val salonDiamante = Instalacion(
         nombreDeInstalacion = "Salon Diamante",
         descripcionDeInstalacion = "Esta es la descripcion de salon diamante lalalala lalal al al ala la la la",
-        costoDeInstalacion = 1000000,
+        costoDeInstalacion = 1000,
         CapacidadInstalacion = 80000,
         LocalidadDeInstalacion = "Buenos Aires",
         imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp"
@@ -44,7 +44,7 @@ class userMagic : InitializingBean {
     val salonMix = Instalacion(
         nombreDeInstalacion = "Salon Mix",
         descripcionDeInstalacion = "Esta es la descripcion del salon mix lalalalala lalalallaa llalalala la",
-        costoDeInstalacion = 500000,
+        costoDeInstalacion = 1000,
         CapacidadInstalacion = 200,
         LocalidadDeInstalacion = "Madrid",
         imagenPrincipal = "https://i.ibb.co/HGdW34k/foto-salon-mix.webp"
@@ -52,7 +52,7 @@ class userMagic : InitializingBean {
     val InstalacionGenerica = Instalacion(
         nombreDeInstalacion = "Tu evento, tu lugar",
         descripcionDeInstalacion = "¡Celebra tu evento en cualquier lugar! ",
-        costoDeInstalacion = 1,
+        costoDeInstalacion = 0,
         CapacidadInstalacion = 1,
         LocalidadDeInstalacion = "",
         montoDeReserva = 0.0,
@@ -73,7 +73,7 @@ class userMagic : InitializingBean {
         nombreYApellido = "Jhon Smith",
         username = "Jsmith",
         contrasenia = "1234",
-        saldo = 500000.0
+        saldo = 1000.0
 
         )
 

@@ -13,7 +13,8 @@ data class eventoDTO(
     val fechaEventoFin : LocalDateTime,
     val serviciosAdquiridos : MutableList<Servicio>,
     val owner : Long,
-    val presupuesto :Int
+    val presupuesto :Int,
+    val dias :Int
     )
 
 

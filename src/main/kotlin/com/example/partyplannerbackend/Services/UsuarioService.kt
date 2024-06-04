@@ -48,6 +48,8 @@ class UsuarioService {
         usuario.desactivar()
         return repoUsuario.save(usuario)
     }
+    fun guardarr(usuario: Usuario) = repoUsuario.save(usuario)
+
 
     fun activarUsuario(id : Long) : Usuario{
         val usuario = getUser(id).get()

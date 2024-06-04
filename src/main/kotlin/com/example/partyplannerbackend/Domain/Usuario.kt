@@ -49,15 +49,15 @@ class Usuario (
 
     fun tengoSaldoParaSeniar(instalacion: Instalacion) = saldo >= instalacion.costoDeInstalacion
 
-    fun pagoDeReserva(instalacion: Instalacion) {
-        saldo -= instalacion.montoDeReserva
+    fun pagoDeReserva(instalacion: Instalacion,dias: Int) {
+        saldo -= instalacion.montoDeReserva * dias
         instalacion.aniadirDineroDeReserva(instalacion.montoDeReserva)
     }
 
-    fun reservarLugar(instalacion: Instalacion, fecha : Reserva) {
+    fun reservarLugar(instalacion: Instalacion, fecha : Reserva,dias :Int) {
         instalacion.validarReserva(fecha)
         puedoSeniar(instalacion)
-        pagoDeReserva(instalacion)
+        pagoDeReserva(instalacion,dias)
     }
 
      fun puedoSeniar(instalacion: Instalacion) {
