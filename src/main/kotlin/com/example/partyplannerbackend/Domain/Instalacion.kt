@@ -36,6 +36,9 @@ class Instalacion(
     val numeroDeTelefono : Int = 0,
     @Column
     val mail : String = "",
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario")
+    val owner :Usuario = Usuario(),
     @Column
     var activo : Boolean = true
 ) {
