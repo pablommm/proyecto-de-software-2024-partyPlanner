@@ -33,6 +33,10 @@ class Instalacion(
     @JoinColumn(name = "idInstalacion")
     val imagenes: MutableList<Imagen> = mutableListOf(),
     @Column
+    val numeroDeTelefono : Int = 0,
+    @Column
+    val mail : String = "",
+    @Column
     var activo : Boolean = true
 ) {
 
