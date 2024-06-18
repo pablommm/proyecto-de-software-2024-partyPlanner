@@ -1,5 +1,6 @@
 package com.example.partyplannerbackend.Services
 
+import com.example.partyplannerbackend.DTO.UsuarioCreateDTO
 import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
 import com.example.partyplannerbackend.Domain.Instalacion
 import com.example.partyplannerbackend.Domain.Usuario
@@ -22,7 +23,16 @@ class UsuarioService {
 
     fun getEventos(id :Long) = repoUsuario.findById(id).get().eventos
 
+    fun isUsernameUnique(username: UsuarioCreateDTO): Boolean {
+        return repoUsuario.findAll().any{ it.validacionUsernameUnique(username) }
+    }
+    fun validateUniqueUsername(username: UsuarioCreateDTO){
+        if(isUsernameUnique(username)) throw RuntimeException("El username ya esta usado")
+    }
+
+
     fun crearUsuario(nuevoUsuario: Usuario): Usuario {
+        //validarUsername(nuevoUsuario.username)
         repoUsuario.save(nuevoUsuario)
         return nuevoUsuario
     }

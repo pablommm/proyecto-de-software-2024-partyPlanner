@@ -36,9 +36,9 @@ class Instalacion(
     val numeroDeTelefono : Int = 0,
     @Column
     val mail : String = "",
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idUsuario")
-    val owner :Usuario = Usuario(),
+    val owner :Usuario? = null,
     @Column
     var activo : Boolean = true
 ) {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface usuarioRepository : CrudRepository<Usuario, Long> {
 
-   /* fun listaDeEventos(id: Long) = findById(id).get().eventos
+    /* fun listaDeEventos(id: Long) = findById(id).get().eventos
 
  //    fun getUserPass(userIdentificador: UsuarioLoginDTO) = findAll().filter { user -> user.accesoUsuario(userIdentificador) }
 
@@ -32,7 +32,8 @@ interface usuarioRepository : CrudRepository<Usuario, Long> {
 
     */
 
-
+    @Query("SELECT COUNT(*) FROM Usuario WHERE username = ?1")
+    fun validarUsername(username: String): Boolean
 
 
 }

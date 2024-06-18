@@ -1,5 +1,6 @@
 package com.example.partyplannerbackend.Domain
 
+import com.example.partyplannerbackend.DTO.UsuarioCreateDTO
 import com.example.partyplannerbackend.DTO.UsuarioLoginDTO
 import jakarta.persistence.*
 import jakarta.persistence.Id
@@ -84,6 +85,9 @@ class Usuario (
     fun esValidoContrasenia() = contrasenia.isEmpty()
     fun validarContrasenia() {
         if(esValidoContrasenia()) throw RuntimeException("El contraseña esta vacio")
+    }
+    fun validacionUsernameUnique(user: UsuarioCreateDTO) :Boolean{
+        return user.usuario == username
     }
 
      fun validar() {

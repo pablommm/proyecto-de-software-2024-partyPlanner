@@ -23,22 +23,14 @@ class userMagic : InitializingBean {
 
 
     override fun afterPropertiesSet() {
-        crearInstalacion()
+
         crearServicios()
-        crearEventos()
         crearUser()
+        crearInstalacion()
+        crearEventos()
     }
 
 
-    // Instancia 1: Estadio
-    val salonDiamante = Instalacion(
-        nombreDeInstalacion = "Salon Diamante",
-        descripcionDeInstalacion = "Esta es la descripcion de salon diamante lalalala lalal al al ala la la la",
-        costoDeInstalacion = 1000,
-        CapacidadInstalacion = 80000,
-        LocalidadDeInstalacion = "Buenos Aires",
-        imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp"
-    )
 
     // Instancia 2: Gimnasio
     val salonMix = Instalacion(
@@ -59,14 +51,6 @@ class userMagic : InitializingBean {
         imagenPrincipal = "https://i.ibb.co/DzBLCwz/download.jpg"
     )
 
-    fun crearInstalacion(){
-        repoInstalacion.save(InstalacionGenerica)
-        repoInstalacion.save(salonDiamante)
-        repoInstalacion.save(salonMix)
-
-    }
-
-
 
 
     val usuarioPrueba = Usuario(
@@ -84,6 +68,7 @@ class userMagic : InitializingBean {
         repoUser.save(usuarioPrueba)
         repoUser.save(admin)
         repoUser.save(test)
+        repoUser.save(test2)
     }
     // Servicios
     val catering = Servicio(nombreDeServicio = "Servicio de catering", descripcion = "esto es una descripcion lalalalalalalalalalalalalalalalala",categoria = Categoria.GASTRONOMIA, monto = 5000.0)
@@ -98,6 +83,56 @@ class userMagic : InitializingBean {
     }
 
 
+    val usuario1 = Usuario(
+        nombreYApellido = "Juan perez",
+        username = "Jperez",
+        contrasenia = "1234",
+        rol = Rol.ADMINISTRADOR,
+        eventos = mutableListOf()
+    )
+    val admin = Usuario(
+        nombreYApellido = "admin",
+        username = "admin",
+        contrasenia = "admin",
+        rol = Rol.ADMINISTRADOR,
+
+    )
+    val test = Usuario(
+        nombreYApellido = "admin",
+        username = "admin",
+        contrasenia = "admin",
+        rol = Rol.ADMINISTRADOR,
+
+        )
+    val test2 = Usuario(
+        nombreYApellido = "admin",
+        username = "admin",
+        contrasenia = "admin",
+        rol = Rol.PROPIETARIO,
+
+        )
+    fun crearEventos(){
+        repoEventos.save(bodaMYB)
+        repoEventos.save(fiestaCumpleaños)
+        repoEventos.save(fiestaCumpleaños2)
+    }
+    fun crearInstalacion(){
+        repoInstalacion.save(InstalacionGenerica)
+        repoInstalacion.save(salonDiamante)
+        repoInstalacion.save(salonMix)
+
+    }
+
+    // Instancia 1: Estadio
+    val salonDiamante = Instalacion(
+        nombreDeInstalacion = "Salon Diamante",
+        descripcionDeInstalacion = "Esta es la descripcion de salon diamante lalalala lalal al al ala la la la",
+        costoDeInstalacion = 1000,
+        CapacidadInstalacion = 80000,
+        LocalidadDeInstalacion = "Buenos Aires",
+        imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp",
+        owner = usuario1
+    )
     val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(seguridad), presupuesto = 2000000)
 
     val fiestaCumpleaños = Evento(
@@ -114,31 +149,6 @@ class userMagic : InitializingBean {
         fechaEventoFin = LocalDateTime.now(),
         serviciosAdquiridos = mutableListOf()
     )
-    fun crearEventos(){
-        repoEventos.save(bodaMYB)
-        repoEventos.save(fiestaCumpleaños)
-        repoEventos.save(fiestaCumpleaños2)
-    }
-    val usuario1 = Usuario(
-        nombreYApellido = "Juan perez",
-        username = "Jperez",
-        contrasenia = "1234",
-        rol = Rol.ADMINISTRADOR,
-        eventos = mutableListOf(bodaMYB)
-    )
-    val admin = Usuario(
-        nombreYApellido = "admin",
-        username = "admin",
-        contrasenia = "admin",
-        rol = Rol.ADMINISTRADOR,
 
-    )
-    val test = Usuario(
-        nombreYApellido = "admin",
-        username = "admin",
-        contrasenia = "admin",
-        rol = Rol.ADMINISTRADOR,
-
-        )
 
 }

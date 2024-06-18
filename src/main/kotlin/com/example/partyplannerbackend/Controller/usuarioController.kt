@@ -23,6 +23,7 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
 
         @PostMapping("/CrearUsuario")
         fun create(@RequestBody usuario : UsuarioCreateDTO):Usuario {
+            userService.validateUniqueUsername(usuario)
             return userService.crearUsuario(usuario.toUsuario())
         }
 
