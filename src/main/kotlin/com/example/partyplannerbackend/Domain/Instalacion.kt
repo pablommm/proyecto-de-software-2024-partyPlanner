@@ -19,7 +19,15 @@ class Instalacion(
     @Column
     var CapacidadInstalacion: Int=1,
     @Column
+    var calle : String = "",
+    @Column
+    var altura : Int = 0,
+    @Column
     var LocalidadDeInstalacion : String = "",
+    @Column
+    var provincia : String = "",
+    @Column
+    var direccion : String = calle + " " + altura + " " + LocalidadDeInstalacion + " " + provincia,
     @Column
     var montoDeReserva :Double = costoDeInstalacion * 0.15,
     @Column
@@ -36,6 +44,18 @@ class Instalacion(
     val numeroDeTelefono : Int = 0,
     @Column
     val mail : String = "",
+    @Column
+    val baños : Int = 0,
+    @Column
+    val terraza : Boolean = true,
+    @Column
+    val jardin : Boolean = true,
+    @Column
+    val estacionamiento : Boolean = true,
+    @Column
+    val alojamiento : Boolean = true,
+    @Column
+    val cocina : Boolean = true,
   //  @ManyToOne(fetch = FetchType.EAGER)
     //  @JoinColumn(name = "idUsuario")
     //  val owner :Usuario? = null,
