@@ -21,6 +21,9 @@ class Usuario (
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuarioID")
     val eventos : MutableList<Evento> = mutableListOf(),
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuarioID")
+    val instalaciones : MutableList<Instalacion> = mutableListOf(),
     @Column
     val rol : Rol = Rol.CONSUMIDOR,
     @Column
@@ -28,7 +31,9 @@ class Usuario (
     @Column
     var activo : Boolean = true
 ){
-
+    fun agregarInstalacion( instalacion: Instalacion){
+        instalaciones.add(instalacion)
+    }
     fun activar(){
         this.activo = true
     }

@@ -1,5 +1,6 @@
 package com.example.partyplannerbackend.DTO
 
+import com.example.partyplannerbackend.Domain.Rol
 import com.example.partyplannerbackend.Domain.Usuario
 import java.time.LocalDate
 
@@ -17,12 +18,18 @@ data class UsuarioCreateDTO(
     val nombre:String,
     val apellido: String,
     val usuario: String,
-    val pwd: String)
+    val pwd: String,
+    val rol :Rol
+    )
+
+
 
 fun UsuarioCreateDTO.toUsuario() = Usuario(
     nombreYApellido = "$nombre"+" "+"$apellido",
     username =  usuario,
-    contrasenia =  pwd)
+    contrasenia =  pwd,
+    rol= rol
+)
 
 data class UsuarioModificado (
     val nombreYApellido : String ,

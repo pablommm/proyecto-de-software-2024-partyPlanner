@@ -25,8 +25,8 @@ class userMagic : InitializingBean {
     override fun afterPropertiesSet() {
 
         crearServicios()
-        crearUser()
         crearInstalacion()
+        crearUser()
         crearEventos()
     }
 
@@ -104,13 +104,7 @@ class userMagic : InitializingBean {
         rol = Rol.ADMINISTRADOR,
 
         )
-    val test2 = Usuario(
-        nombreYApellido = "admin",
-        username = "admin",
-        contrasenia = "admin",
-        rol = Rol.PROPIETARIO,
 
-        )
     fun crearEventos(){
         repoEventos.save(bodaMYB)
         repoEventos.save(fiestaCumpleaños)
@@ -131,7 +125,7 @@ class userMagic : InitializingBean {
         CapacidadInstalacion = 80000,
         LocalidadDeInstalacion = "Buenos Aires",
         imagenPrincipal = "https://i.ibb.co/DwGzkdy/foto-salon-diamante.webp",
-        owner = usuario1
+
     )
     val bodaMYB = Evento(nombreDelEvento = "Boda de Matias y Belen",lugar = salonDiamante, fechaEventoIni = LocalDateTime.now(), fechaEventoFin = LocalDateTime.now(),serviciosAdquiridos = mutableListOf(seguridad), presupuesto = 2000000)
 
@@ -149,6 +143,12 @@ class userMagic : InitializingBean {
         fechaEventoFin = LocalDateTime.now(),
         serviciosAdquiridos = mutableListOf()
     )
-
+    val test2 = Usuario(
+        nombreYApellido = "admin",
+        username = "admin",
+        contrasenia = "admin",
+        rol = Rol.PROPIETARIO,
+        instalaciones = mutableListOf(salonMix)
+        )
 
 }

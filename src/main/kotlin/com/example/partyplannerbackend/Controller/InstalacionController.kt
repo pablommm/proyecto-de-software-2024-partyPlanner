@@ -3,13 +3,14 @@ package com.example.partyplannerbackend.Controller
 import com.example.partyplannerbackend.DTO.*
 import com.example.partyplannerbackend.Domain.*
 import com.example.partyplannerbackend.Services.InstalacionService
+import com.example.partyplannerbackend.Services.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
 @CrossOrigin("*")
-class InstalacionController(@Autowired val instalacionService: InstalacionService) {
+class InstalacionController(@Autowired val instalacionService: InstalacionService,@Autowired val usuarioService: UsuarioService ) {
 
     @GetMapping("/Instalaciones")
     fun getInstalacionesTodas() = instalacionService.getInstalacionesTodas()
@@ -36,7 +37,11 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     }
     @PostMapping("/CrearInstalacion")
     fun create(@RequestBody instalacionBody: instalacionDTO): Instalacion {
-        return instalacionService.crearInstalacion(instalacionBody.toInstalacion())
+        val usuario = usuarioService.getUser(instalacionBody.owner).get()
+        val nueaInstalacion = instalacionService.crearInstalacion(instalacionBody.toInstalacion())
+        usuario.agregarInstalacion(nueaInstalacion)
+        usuarioService.guardarr(usuario)
+        return nueaInstalacion
     }
 
     @PutMapping("/EditarInstalacion/{id}")

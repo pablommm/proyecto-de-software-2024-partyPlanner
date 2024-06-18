@@ -30,6 +30,8 @@ class UsuarioService {
         if(isUsernameUnique(username)) throw RuntimeException("El username ya esta usado")
     }
 
+    fun misPropiedades(id :Long) = repoUsuario.findById(id).get().instalaciones
+
 
     fun crearUsuario(nuevoUsuario: Usuario): Usuario {
         //validarUsername(nuevoUsuario.username)
