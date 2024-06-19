@@ -31,6 +31,10 @@ class UsuarioController (@Autowired val userService : UsuarioService) {
     fun getMisPropiedades(@PathVariable id: Long): MutableList<Instalacion> {
         return userService.misPropiedades(id)
     }
+    @GetMapping("/searchMisPropiedades/{id}/{nombre}")
+    fun searchMisPropiedades(@PathVariable id: Long,@PathVariable nombre: String):  List<Instalacion> {
+        return userService.searchMisPropiedades(id,nombre)
+    }
     @GetMapping("/MisEventos/{id}")
     fun getMisEvento(@PathVariable id: Long): MutableList<Evento> {
         return userService.getEventos(id)

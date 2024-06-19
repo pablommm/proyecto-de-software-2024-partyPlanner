@@ -32,6 +32,9 @@ class UsuarioService {
 
     fun misPropiedades(id :Long) = repoUsuario.findById(id).get().instalaciones
 
+    fun searchMisPropiedades( id: Long, nombre: String): List<Instalacion> {
+       return misPropiedades(id).filter { it.nombreDeInstalacion.lowercase() == nombre.lowercase() }
+    }
 
     fun crearUsuario(nuevoUsuario: Usuario): Usuario {
         //validarUsername(nuevoUsuario.username)
