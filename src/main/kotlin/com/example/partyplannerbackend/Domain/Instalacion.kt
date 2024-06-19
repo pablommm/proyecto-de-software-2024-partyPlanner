@@ -1,5 +1,7 @@
 package com.example.partyplannerbackend.Domain
 
+import com.example.partyplannerbackend.DTO.UsuarioCreateDTO
+import com.example.partyplannerbackend.DTO.instalacionDTO
 import jakarta.persistence.*
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -152,7 +154,9 @@ class Instalacion(
     fun validardescripcionDeInstalacion() {
         if(esValidodescripcionDeInstalacion()) throw RuntimeException("La descripcion no puede estar vacio")
     }
-
+    fun validacionUsernameUnique(instalacion: instalacionDTO) :Boolean{
+        return instalacion.nombreDeInstalacion == nombreDeInstalacion
+    }
 
 
       fun validar() {

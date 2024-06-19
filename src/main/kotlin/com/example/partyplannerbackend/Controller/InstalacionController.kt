@@ -37,6 +37,7 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     }
     @PostMapping("/CrearInstalacion")
     fun create(@RequestBody instalacionBody: instalacionDTO): Instalacion {
+       instalacionService.validateUniqueNombre(instalacionBody)
         val usuario = usuarioService.getUser(instalacionBody.owner).get()
         val nueaInstalacion = instalacionService.crearInstalacion(instalacionBody.toInstalacion())
         usuario.agregarInstalacion(nueaInstalacion)
