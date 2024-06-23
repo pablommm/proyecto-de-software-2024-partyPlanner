@@ -15,4 +15,8 @@ class MantenimientoService {
         repositoryMantenimiento.save(nuevoMantenimiento)
         return nuevoMantenimiento
     }
+
+    fun guardar(mantenimiento: Mantenimiento) {
+        repositoryMantenimiento.save(mantenimiento)
+    }
 }

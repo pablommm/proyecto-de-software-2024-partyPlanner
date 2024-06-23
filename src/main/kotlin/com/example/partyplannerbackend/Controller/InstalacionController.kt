@@ -94,7 +94,7 @@ class InstalacionController(@Autowired val mantenimientoService : MantenimientoS
 
         instalacionid.agregarMantenimiento(mantenimiento)
         instalacionService.guardar(instalacionid)
-
+        mantenimientoService.guardar(mantenimiento)
         return mantenimiento
     }
     @GetMapping("/fechasBloqueadasMantenimiento/{id}")
