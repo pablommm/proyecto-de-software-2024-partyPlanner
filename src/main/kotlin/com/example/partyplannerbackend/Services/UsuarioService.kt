@@ -31,8 +31,11 @@ class UsuarioService {
     }
 
     fun misPropiedades(id :Long) = repoUsuario.findById(id).get().instalaciones
+    fun misPropiedadesByIDinstalacion(idOwner: Long, idInstalacion :Long): List<Instalacion> {
+        return  misPropiedades(idOwner).filter {it.id == idInstalacion}
 
-    fun searchMisPropiedades( id: Long, nombre: String): List<Instalacion> {
+    }
+     fun searchMisPropiedades( id: Long, nombre: String): List<Instalacion> {
        return misPropiedades(id).filter { it.nombreDeInstalacion.lowercase() == nombre.lowercase() || it.LocalidadDeInstalacion.lowercase() == nombre.lowercase()}
     }
 

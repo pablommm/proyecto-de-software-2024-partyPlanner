@@ -6,6 +6,7 @@ import com.example.partyplannerbackend.Services.InstalacionService
 import com.example.partyplannerbackend.Services.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
+import java.lang.RuntimeException
 import java.util.*
 
 @RestController
@@ -67,4 +68,20 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
         val porcentaje = "%$nombreLower%"
         return instalacionService.buscarPorNombreOubicacion(porcentaje)
     }
+
+    @PostMapping("/CrearMantenimiento")
+    fun create(@RequestBody mantenimientoDTO: MantenimientoDTO): Mantenimiento {
+        val instalacionid = instalacionService.getInstalacionById(mantenimientoDTO.Lugar).get()
+        val propietario = usuarioService.getUser(mantenimientoDTO.owner).get()
+
+        if(usuarioService.misPropiedadesByIDinstalacion(mantenimientoDTO.owner,mantenimientoDTO.Lugar).isEmpty()){
+            throw RuntimeException("No es propietario")
+
+        }
+
+
+        return mantenimientoDTO.toMantenimiento()
+    }
+
+
 }

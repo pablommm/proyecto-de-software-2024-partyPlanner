@@ -61,10 +61,19 @@ class Instalacion(
   //  @ManyToOne(fetch = FetchType.EAGER)
     //  @JoinColumn(name = "idUsuario")
     //  val owner :Usuario? = null,
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "instalacion_id")
+    var mantenimientos : MutableList<Mantenimiento> = mutableListOf(),
     @Column
     var activo : Boolean = true
 ) {
 
+    fun agregarMantenimiento(mantenimiento: Mantenimiento){
+        mantenimientos.add(mantenimiento)
+    }
+    fun quitarMantenimiento(mantenimiento: Mantenimiento){
+        mantenimientos.remove(mantenimiento)
+    }
     fun costoDelaInstalacionDescontandoReserva() = this.costoDeInstalacion - montoDeReserva
     fun aniadirReserva(reserva : Reserva) = fechasReservadas.add(reserva)
     fun removerReserva(reserva : Reserva) = fechasReservadas.remove(reserva)
