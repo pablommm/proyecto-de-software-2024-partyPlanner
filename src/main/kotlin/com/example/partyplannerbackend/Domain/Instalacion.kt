@@ -49,15 +49,15 @@ class Instalacion(
     @Column
     val baños : Int = 0,
     @Column
-    val terraza : Boolean = true,
+    val terraza : Boolean = false,
     @Column
-    val jardin : Boolean = true,
+    val jardin : Boolean = false,
     @Column
-    val estacionamiento : Boolean = true,
+    val estacionamiento : Boolean = false,
     @Column
-    val alojamiento : Boolean = true,
+    val alojamiento : Boolean = false,
     @Column
-    val cocina : Boolean = true,
+    val cocina : Boolean = false,
   //  @ManyToOne(fetch = FetchType.EAGER)
     //  @JoinColumn(name = "idUsuario")
     //  val owner :Usuario? = null,
