@@ -3,6 +3,7 @@ package com.example.partyplannerbackend.Controller
 import com.example.partyplannerbackend.DTO.*
 import com.example.partyplannerbackend.Domain.*
 import com.example.partyplannerbackend.Services.InstalacionService
+import com.example.partyplannerbackend.Services.MantenimientoService
 import com.example.partyplannerbackend.Services.UsuarioService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -11,7 +12,7 @@ import java.util.*
 
 @RestController
 @CrossOrigin("*")
-class InstalacionController(@Autowired val instalacionService: InstalacionService,@Autowired val usuarioService: UsuarioService ) {
+class InstalacionController(@Autowired val mantenimientoService : MantenimientoService, @Autowired val instalacionService: InstalacionService, @Autowired val usuarioService: UsuarioService ) {
 
     @GetMapping("/Instalaciones")
     fun getInstalacionesTodas() = instalacionService.getInstalacionesTodas()
@@ -79,12 +80,12 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
         val porcentaje = "%$nombreLower%"
         return instalacionService.buscarPorNombreOubicacion(porcentaje)
     }
-
+// FALTA AGREGAR PARAMETROS Y LA FUNCION DE CREAR EN service y guardar el mantenimiento para que setee el id
     @PostMapping("/CrearMantenimiento")
     fun create(@RequestBody mantenimientoDTO: MantenimientoDTO): Mantenimiento {
         val instalacionid = instalacionService.getInstalacionById(mantenimientoDTO.Lugar).get()
         val propietario = usuarioService.getUser(mantenimientoDTO.owner).get()
-        val mantenimiento= mantenimientoDTO.toMantenimiento()
+        val mantenimiento= mantenimientoService.crearMantenimiento(mantenimientoDTO.toMantenimiento())
 
         if(usuarioService.misPropiedadesByIDinstalacion(mantenimientoDTO.owner,mantenimientoDTO.Lugar).isEmpty()){
             throw RuntimeException("No es propietario")
@@ -92,9 +93,13 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
         }
 
         instalacionid.agregarMantenimiento(mantenimiento)
+        instalacionService.guardar(instalacionid)
 
         return mantenimiento
     }
-
+    @GetMapping("/fechasBloqueadasMantenimiento/{id}")
+    fun getFechasBloqueadasMantenimiento(@PathVariable id : Long): MutableList<Mantenimiento> {
+        return instalacionService.getListaFechasMantenimientoInstalacionById(id)
+    }
 
 }

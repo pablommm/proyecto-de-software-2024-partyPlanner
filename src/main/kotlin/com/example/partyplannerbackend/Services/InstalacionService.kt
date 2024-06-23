@@ -3,6 +3,7 @@ package com.example.partyplannerbackend.Services
 import com.example.partyplannerbackend.DTO.UsuarioCreateDTO
 import com.example.partyplannerbackend.DTO.instalacionDTO
 import com.example.partyplannerbackend.Domain.Instalacion
+import com.example.partyplannerbackend.Domain.Mantenimiento
 import com.example.partyplannerbackend.Domain.Reserva
 import com.example.partyplannerbackend.Domain.Servicio
 import com.example.partyplannerbackend.Repositorio.InstalacionRepository
@@ -26,6 +27,12 @@ class InstalacionService {
         val instalacion = repoInstalacion.findById(id).get()
         return instalacion.fechasReservadas
     }
+
+    fun getListaFechasMantenimientoInstalacionById(id: Long): MutableList<Mantenimiento> {
+        val instalacion = repoInstalacion.findById(id).get()
+        return instalacion.mantenimientos
+    }
+
     fun desactivarInstalacion(id : Long): Instalacion {
         val instalacion = getInstalacionById(id).get()
         instalacion.desactivacion()
