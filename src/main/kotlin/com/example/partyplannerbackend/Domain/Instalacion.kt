@@ -43,21 +43,21 @@ class Instalacion(
     @JoinColumn(name = "idInstalacion")
     val imagenes: MutableList<Imagen> = mutableListOf(),
     @Column
-    val numeroDeTelefono : Int = 0,
+    var numeroDeTelefono : Int = 0,
     @Column
-    val mail : String = "",
+    var mail : String = "",
     @Column
-    val baños : Int = 0,
+    var baños : Int = 0,
     @Column
-    val terraza : Boolean = false,
+    var terraza : Boolean = false,
     @Column
-    val jardin : Boolean = false,
+    var jardin : Boolean = false,
     @Column
-    val estacionamiento : Boolean = false,
+    var estacionamiento : Boolean = false,
     @Column
-    val alojamiento : Boolean = false,
+    var alojamiento : Boolean = false,
     @Column
-    val cocina : Boolean = false,
+    var cocina : Boolean = false,
   //  @ManyToOne(fetch = FetchType.EAGER)
     //  @JoinColumn(name = "idUsuario")
     //  val owner :Usuario? = null,

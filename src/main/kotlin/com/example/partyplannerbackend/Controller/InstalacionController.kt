@@ -56,6 +56,17 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
         instalacionExistente.CapacidadInstalacion =instalacionBody.capacidadInstalacion
         instalacionExistente.LocalidadDeInstalacion =instalacionBody.localidadDeInstalacion
         instalacionExistente.montoDeReserva = instalacionBody.montoDeReserva
+        instalacionExistente.calle=instalacionBody.calle
+        instalacionExistente.altura=instalacionBody.altura
+        instalacionExistente.provincia=instalacionBody.provincia
+        instalacionExistente.numeroDeTelefono=instalacionBody.numeroDeTelefono
+        instalacionExistente.mail=instalacionBody.mail
+        instalacionExistente.baños=instalacionBody.baños
+        instalacionExistente.terraza=instalacionBody.terraza
+        instalacionExistente.jardin=instalacionBody.jardin
+        instalacionExistente.estacionamiento=instalacionBody.estacionamiento
+        instalacionExistente.alojamiento=instalacionBody.alojamiento
+        instalacionExistente.cocina=instalacionBody.cocina
 
         val instalacionModificado = instalacionService.guardar(instalacionExistente)
 
@@ -73,14 +84,16 @@ class InstalacionController(@Autowired val instalacionService: InstalacionServic
     fun create(@RequestBody mantenimientoDTO: MantenimientoDTO): Mantenimiento {
         val instalacionid = instalacionService.getInstalacionById(mantenimientoDTO.Lugar).get()
         val propietario = usuarioService.getUser(mantenimientoDTO.owner).get()
+        val mantenimiento= mantenimientoDTO.toMantenimiento()
 
         if(usuarioService.misPropiedadesByIDinstalacion(mantenimientoDTO.owner,mantenimientoDTO.Lugar).isEmpty()){
             throw RuntimeException("No es propietario")
 
         }
 
+        instalacionid.agregarMantenimiento(mantenimiento)
 
-        return mantenimientoDTO.toMantenimiento()
+        return mantenimiento
     }
 
 
