@@ -91,10 +91,9 @@ class InstalacionController(@Autowired val mantenimientoService : MantenimientoS
             throw RuntimeException("No es propietario")
 
         }
-
+        mantenimientoService.guardar(mantenimiento)
         instalacionid.agregarMantenimiento(mantenimiento)
         instalacionService.guardar(instalacionid)
-        mantenimientoService.guardar(mantenimiento)
         return mantenimiento
     }
     @GetMapping("/fechasBloqueadasMantenimiento/{id}")
