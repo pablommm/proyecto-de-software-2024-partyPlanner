@@ -17,6 +17,7 @@ fun MantenimientoDTO.toMantenimiento() = Mantenimiento(
     fechaIni=fechaIni,
     fechaFin = fechaFin,
     descripcion=descripcion
+
 )
 
 
